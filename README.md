@@ -45,6 +45,12 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill/tree/main/chinese-
 
 ## Demo Prompts
 
+完整的输入与输出示例见 [examples](./examples/README.md)。如果你想先看效果，可以直接打开下面三个示例：
+
+- [CNKI/万方/维普题录导入到文献矩阵](./examples/01-imported-records-to-matrix.md)
+- [从研究主题生成中文数据库检索策略](./examples/02-topic-to-search-strategy.md)
+- [从文献矩阵生成去 AI 化中文综述段落](./examples/03-matrix-to-review-paragraph.md)
+
 ### 1. CNKI/Wanfang/VIP records to matrix
 
 ```text
