@@ -96,6 +96,7 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill/tree/main/chinese-
 | CNKI/万方/维普题录转矩阵 | [查看示例](./examples/01-imported-records-to-matrix.md) |
 | 从文献矩阵生成中文综述 | [查看示例](./examples/03-matrix-to-review-paragraph.md) |
 | Zotero/BibTeX/RIS 导入教程 | [查看示例](./examples/04-zotero-bibtex-ris-import.md) |
+| 完整中文演示案例 | [查看示例](./examples/05-full-chinese-demo-case.md) |
 
 示例提示词：
 
