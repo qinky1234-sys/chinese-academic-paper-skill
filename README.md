@@ -193,3 +193,10 @@ chinese-academic-paper-skill/
 - 创新点评分
 - 中文期刊推荐报告
 - Word 文档导出
+
+## 社区推广
+
+如果你想把这个项目推荐到中文 GitHub 社区，可以使用这份推广素材：
+
+- [GitHub 中文社区推广帖](./promotion/github-chinese-community-post.md)
+- [推广执行清单](./promotion/promotion-checklist.md)
