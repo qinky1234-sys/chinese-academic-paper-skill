@@ -1,72 +1,104 @@
-# Chinese Academic Paper Skill
+# 中文学术论文文献综述助手
 
-一个面向中文学术论文写作的 Codex skill：先整理真实文献，再生成文献矩阵、研究脉络、研究空白、创新点建议和去 AI 化中文综述段落。
+面向中文论文写作的 Codex Skill。它先整理真实文献，再生成文献矩阵、研究脉络、研究空白、创新点建议和更自然的中文综述段落。
 
-`chinese-academic-paper-assistant` is a Codex skill for Chinese academic-paper workflows. It helps users import Chinese literature, build a verifiable literature matrix, analyze research relationships, identify possible innovation points, write natural Chinese literature-review paragraphs, and prepare cautious journal recommendations.
+> 不编造参考文献，不绕过数据库权限，不直接替代学术判断。这个项目的目标是让中文论文写作先回到“真实文献”上。
 
-## Why This Skill
+## 它解决什么问题
 
-普通 AI 写论文很容易出现三个问题：编造引用、综述像模板、创新点空泛。这个 skill 的默认流程反过来做：
+很多人在用 AI 写文献综述时会遇到三个问题：
 
-1. 先让用户导入 CNKI、万方、维普、学校图书馆、期刊官网或 PDF 中已有的文献资料。
-2. 如果文献不够，再用公开来源或已配置接口补充候选文献。
-3. 先输出文献矩阵和研究脉络，再写中文综述段落。
-4. 所有正文内容默认去 AI 化，但不改变事实和引用。
+- 参考文献容易被编造，作者、期刊、年份对不上。
+- 综述段落像模板，只有“研究具有重要意义”，缺少具体文献脉络。
+- 创新点很空泛，不知道自己到底还能从哪个角度写。
 
-## What It Does
+这个 skill 的工作方式相反：先导入你已有的 CNKI、万方、维普、学校图书馆、期刊官网、Zotero、BibTeX、RIS 或 PDF 文献资料，再进行整理、分析和写作。
 
-- Prioritizes user-imported CNKI, Wanfang, VIP, school-library, journal-site, PDF, DOI, BibTeX, RIS, EndNote, and NoteExpress records.
-- Includes a Zotero/BibTeX/RIS import path so users can export literature from reference managers or Chinese databases before asking the skill to analyze it.
-- Supplements with public sources such as OpenAlex and Crossref when the imported corpus is insufficient.
-- Builds a literature matrix with author, title, journal/source, publication date, key finding, limitation, relationship, and source status.
-- Analyzes common themes, timeline, literature relationships, research gaps, and feasible innovation points.
-- Produces de-AI Chinese academic prose that preserves citations and evidence.
-- Recommends Chinese journals with explicit verification caveats.
+## 适合谁
 
-## Quick Install
+- 正在写本科毕业论文、课程论文、开题报告的学生
+- 正在写硕士论文、博士论文、期刊论文的研究者
+- 需要整理中文文献的科研助理、课题组成员
+- 想把 Zotero、CNKI、万方、维普题录转成文献矩阵的人
+- 需要分析研究空白、创新点和投稿方向的人
 
-Copy the skill folder into your Codex skills directory:
+## 你可以用它做什么
+
+| 功能 | 输出 |
+| --- | --- |
+| 文献导入 | 识别 CNKI、万方、维普、Zotero、BibTeX、RIS、PDF 摘要和复制题录 |
+| 文献矩阵 | 作者、年份、题名、期刊、摘要、关键词、方法、结论、局限 |
+| 研究脉络 | 谁较早提出、谁可能延伸谁、哪些研究存在对比或补充关系 |
+| 研究空白 | 当前文献中尚未充分解决的问题 |
+| 创新点建议 | 3-5 个可写方向，并说明可行性、所需数据和适合章节 |
+| 综述写作 | 生成可放入引言、文献综述或开题报告的中文段落 |
+| 去 AI 化表达 | 减少模板句，保留事实、引用和学术语气 |
+| 期刊推荐 | 给出中文期刊匹配思路和人工核验提醒 |
+
+## 快速开始
+
+第一次使用建议先看：
+
+- [新手使用文档](./docs/getting-started.md)
+- [复制即用提示词模板](./docs/copy-paste-prompts.md)
+- [示例输入与输出](./examples/README.md)
+
+最小可用提示词：
+
+```text
+使用 chinese-academic-paper-assistant。
+我的论文主题是【填写主题】，研究方向是【填写方向】。
+下面是我已经找到的文献资料，请先整理成文献矩阵，检查字段是否完整，再分析文献共同点、研究脉络、研究空白和可选创新点。
+不要编造文献，不要把待核验文献写进正式综述。
+```
+
+## 安装方式
+
+把 skill 文件夹复制到你的 Codex skills 目录：
 
 ```powershell
 mkdir $env:USERPROFILE\.codex\skills -Force
 Copy-Item -Recurse .\chinese-academic-paper-assistant $env:USERPROFILE\.codex\skills\
 ```
 
-Then ask Codex:
+然后在 Codex 中使用：
 
 ```text
 使用 chinese-academic-paper-assistant，帮我整理这些中文文献，生成文献矩阵、研究脉络、创新点和去 AI 化综述段落。
 ```
 
-If your Codex environment supports installing skills directly from GitHub, install from this repository path:
+如果你的 Codex 支持从 GitHub 安装 skill，可以使用这个仓库路径：
 
 ```text
 https://github.com/qinky1234-sys/chinese-academic-paper-skill/tree/main/chinese-academic-paper-assistant
 ```
 
-## Start Here
+## 推荐工作流
 
-第一次使用建议先看这两份文档：
+1. 准备 8-15 条真实文献题录。
+2. 优先导入 Zotero、BibTeX、RIS、CNKI、万方、维普、学校图书馆或期刊官网导出的资料。
+3. 先生成文献矩阵，不急着写正文。
+4. 检查作者、题名、期刊、年份、摘要、关键词、DOI/链接是否完整。
+5. 文献不够时，再生成 CNKI、万方、维普和公开来源的补充检索策略。
+6. 在矩阵基础上分析共同点、研究脉络、研究空白和创新点。
+7. 最后生成去 AI 化中文综述段落。
 
-- [新手使用文档](./docs/getting-started.md)
-- [复制即用提示词模板](./docs/copy-paste-prompts.md)
+## 示例效果
 
-## Demo Prompts
+| 场景 | 示例 |
+| --- | --- |
+| CNKI/万方/维普题录转矩阵 | [查看示例](./examples/01-imported-records-to-matrix.md) |
+| 从研究主题生成检索策略 | [查看示例](./examples/02-topic-to-search-strategy.md) |
+| 从文献矩阵生成中文综述 | [查看示例](./examples/03-matrix-to-review-paragraph.md) |
+| Zotero/BibTeX/RIS 导入教程 | [查看示例](./examples/04-zotero-bibtex-ris-import.md) |
 
-完整的输入与输出示例见 [examples](./examples/README.md)。如果你想先看效果，可以直接打开下面这些示例：
-
-- [CNKI/万方/维普题录导入到文献矩阵](./examples/01-imported-records-to-matrix.md)
-- [从研究主题生成中文数据库检索策略](./examples/02-topic-to-search-strategy.md)
-- [从文献矩阵生成去 AI 化中文综述段落](./examples/03-matrix-to-review-paragraph.md)
-- [Zotero/BibTeX/RIS 导入教程](./examples/04-zotero-bibtex-ris-import.md)
-
-### 1. CNKI/Wanfang/VIP records to matrix
+示例提示词：
 
 ```text
 我已经从 CNKI 导出了 12 篇乡村振兴相关文献。请先整理文献矩阵，再分析研究脉络和创新点。
 ```
 
-Expected output:
+预期输出：
 
 - 文献矩阵
 - 文献共同点
@@ -74,72 +106,54 @@ Expected output:
 - 哪些研究可能存在承接关系
 - 当前研究空白
 - 3-5 个可选创新点
-
-### 2. Topic to search strategy
-
-```text
-围绕“数字治理与基层公共服务”帮我生成 CNKI、万方、维普可用的检索关键词和高级检索式。如果文献不够，再用公开来源补充候选文献。
-```
-
-Expected output:
-
-- 中文数据库检索式
-- 推荐导出字段
-- 公开来源补充策略
-- 待核验候选文献说明
-
-### 3. Literature to de-AI review paragraph
-
-```text
-根据这些文献，写一段可以放在中文论文引言里的文献综述。要求去 AI 化，保留引用，不要编造文献结论。
-```
-
-Expected output:
-
 - 去 AI 化中文综述段落
-- 引用标记
-- 不确定内容的 TODO 核验提示
 
-### 4. Zotero/BibTeX/RIS import
+## 支持的导入来源
+
+- CNKI、万方、维普导出的题录或引用信息
+- 学校图书馆数据库导出的文献记录
+- 期刊官网公开题录
+- Zotero、EndNote、NoteExpress
+- BibTeX、RIS、DOI 列表
+- PDF 摘要、复制的参考文献、手工整理的文献表
+
+导入字段越完整，输出越可靠。推荐至少包含：作者、题名、期刊或来源、发表年份、摘要、关键词、DOI/URL 或数据库来源。
+
+## 学术边界
+
+这个 skill 不会做这些事：
+
+- 编造参考文献、作者、期刊名、发表时间或研究结论
+- 绕过 CNKI、万方、维普、学校图书馆的登录、付费、验证码或权限限制
+- 虚构核心、CSSCI、CSCD、影响因子、审稿周期、版面费或录用率
+- 承诺通过查重、AI 检测或期刊录用
+- 把字段不完整、来源不可追溯的文献直接写进正式综述
+
+它可以帮助你整理、分析和改写，但最终引用核验、学术判断和论文责任仍然需要由作者完成。
+
+## 项目结构
 
 ```text
-我在 Zotero 里有一批文献，想导出给这个 skill。请告诉我应该导出什么格式，以及你收到后会怎么处理。
+chinese-academic-paper-skill/
+├─ chinese-academic-paper-assistant/   # Codex skill 主体
+│  ├─ SKILL.md
+│  ├─ references/                      # 工作流、数据库边界、写作规则
+│  ├─ scripts/                         # BibTeX/RIS 解析、矩阵校验等脚本
+│  └─ assets/                          # 文献矩阵和输出模板
+├─ docs/                               # 新手文档和提示词模板
+└─ examples/                           # 示例输入与输出
 ```
 
-Expected output:
+## 版本路线
 
-- Zotero 导出步骤
-- BibTeX/RIS 选择建议
-- 导入后的字段核验规则
-- 文献矩阵生成入口
+- v0.1：文献导入、公开来源补充、文献矩阵、研究脉络、创新点、去 AI 化综述、基础期刊推荐。
+- v0.1.3：Zotero/BibTeX/RIS 导入教程和示例工作流。
+- v0.1.4：复制即用提示词模板和新手使用文档。
+- v0.1.5：本科论文、硕士论文、期刊论文、开题报告四种输出模式。
+- v0.2：授权万方接口接入、付费额度、中文元数据核验增强、批量文献分析。
+- v0.3+：更完善的 CNKI/VIP/学校图书馆导入流程、更多导出格式、期刊官网公开元数据处理。
 
-## Boundaries
-
-This skill does not fabricate references, data, experiments, journal rankings, impact factors, review cycles, fees, or acceptance probabilities. It does not scrape CNKI, Wanfang, VIP, or school-library pages behind login, captcha, subscription, or paywall barriers. It only processes user-provided materials, public sources, or authorized interfaces.
-
-## Good First Use Case
-
-准备 8-15 条中文文献题录，最好包含：
-
-- 作者
-- 题名
-- 期刊名称
-- 发表时间
-- 摘要
-- 关键词
-- DOI 或来源链接
-
-然后让 Codex 使用这个 skill 先生成文献矩阵，不要一开始就要求完整论文。
-
-## Version Plan
-
-- v0.1: user import, public-source supplement, literature matrix, relationship analysis, innovation points, de-AI Chinese review paragraphs, basic journal recommendations.
-- v0.1.3: Zotero/BibTeX/RIS import tutorial and example workflow.
-- v0.1.4: copy-paste prompt templates and beginner guide.
-- v0.2: authorized Wanfang integration through a backend service, paid quota, stronger Chinese metadata verification, enhanced relationship analysis.
-- v0.3+: better CNKI/VIP/library import workflows, more export formats, journal-site public metadata extraction.
-
-## Support and Roadmap
+## 后续计划
 
 如果你希望支持万方接口接入、批量文献分析、课题组定制版或机构版，可以通过 GitHub Issues 提需求。后续商业版会优先考虑：
 
@@ -148,3 +162,4 @@ This skill does not fabricate references, data, experiments, journal rankings, i
 - 引用关系增强分析
 - 创新点评分
 - 中文期刊推荐报告
+- Word 文档导出
