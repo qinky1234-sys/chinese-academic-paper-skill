@@ -16,6 +16,7 @@ Use this skill to help users build Chinese academic papers from traceable litera
 - When the user mentions Zotero, BibTeX, RIS, EndNote, NoteExpress, or database exports, load `references/zotero_bibtex_ris_import.md` and guide them through export, paste/upload, parse, normalize, and metadata-check steps.
 - Use public sources or configured APIs to supplement only when the user-supplied corpus is too small, outdated, narrow, missing core works, or missing required metadata.
 - If the user has no literature, search public sources or configured APIs for candidate literature and produce a candidate matrix plus a clearly labeled "待核验版" review when enough traceable metadata is available.
+- When the user specifies 本科论文, 硕士论文, or 期刊论文, load `references/output_modes.md` and adapt depth, structure, review length, innovation-point expectations, and final check standards to that mode.
 - Do not scrape CNKI, Wanfang, VIP, or school-library pages behind login, captcha, subscription, or paywall barriers. Process only materials the user lawfully provides or data returned by authorized interfaces.
 - A source may enter formal review paragraphs only when it has at least: author(s), title, journal/source name, publication date/year, and source/identifier. Otherwise keep it in "待核验候选文献".
 - Never invent citations, journal names, publication dates, findings, data, experiments, core-journal status, impact factors, review cycles, fees, or acceptance probabilities.
@@ -71,6 +72,7 @@ Use this skill to help users build Chinese academic papers from traceable litera
    - Write Chinese introduction/literature-review paragraphs only after the matrix and gap analysis.
    - Use citation markers such as `张三等（2023）`, `（张三，2023）`, or the user's requested style.
    - Do not copy source text verbatim; synthesize and paraphrase from verified metadata/abstracts/user-provided excerpts.
+   - Match the paper mode: 本科论文 emphasizes clarity and basic classification; 硕士论文 emphasizes research lineage, gaps, and method feasibility; 期刊论文 emphasizes problem awareness, contribution, argument density, and journal-fit caveats.
 
 9. **De-AI Chinese Academic Rewriting**
    - Remove formulaic expressions such as "随着时代的发展", "具有重要意义", "综上所述可以看出".
@@ -107,6 +109,7 @@ Default response order for literature tasks:
 ## Resources
 
 - `references/workflow.md`: end-to-end workflow and response shapes.
+- `references/output_modes.md`: 本科论文、硕士论文、期刊论文三种输出模式.
 - `references/zotero_bibtex_ris_import.md`: user tutorial for importing Zotero, BibTeX, RIS, and Chinese database exports.
 - `references/literature_review.md`: matrix and Chinese literature review guidance.
 - `references/chinese_database_access.md`: CNKI/Wanfang/VIP/library/journal access boundaries.
