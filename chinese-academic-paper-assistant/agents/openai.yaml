@@ -1,0 +1,4 @@
+interface:
+  display_name: "中文学术论文助手"
+  short_description: "生成可核验中文文献综述、研究脉络、创新点和期刊建议。"
+  default_prompt: "帮我基于已有中文文献生成文献矩阵、研究脉络分析、创新点建议和去 AI 化综述段落。"
