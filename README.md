@@ -44,9 +44,16 @@ If your Codex environment supports installing skills directly from GitHub, insta
 https://github.com/qinky1234-sys/chinese-academic-paper-skill/tree/main/chinese-academic-paper-assistant
 ```
 
+## Start Here
+
+第一次使用建议先看这两份文档：
+
+- [新手使用文档](./docs/getting-started.md)
+- [复制即用提示词模板](./docs/copy-paste-prompts.md)
+
 ## Demo Prompts
 
-完整的输入与输出示例见 [examples](./examples/README.md)。如果你想先看效果，可以直接打开下面三个示例：
+完整的输入与输出示例见 [examples](./examples/README.md)。如果你想先看效果，可以直接打开下面这些示例：
 
 - [CNKI/万方/维普题录导入到文献矩阵](./examples/01-imported-records-to-matrix.md)
 - [从研究主题生成中文数据库检索策略](./examples/02-topic-to-search-strategy.md)
@@ -128,6 +135,7 @@ This skill does not fabricate references, data, experiments, journal rankings, i
 
 - v0.1: user import, public-source supplement, literature matrix, relationship analysis, innovation points, de-AI Chinese review paragraphs, basic journal recommendations.
 - v0.1.3: Zotero/BibTeX/RIS import tutorial and example workflow.
+- v0.1.4: copy-paste prompt templates and beginner guide.
 - v0.2: authorized Wanfang integration through a backend service, paid quota, stronger Chinese metadata verification, enhanced relationship analysis.
 - v0.3+: better CNKI/VIP/library import workflows, more export formats, journal-site public metadata extraction.
 
