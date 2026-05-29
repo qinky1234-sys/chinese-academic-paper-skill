@@ -15,6 +15,7 @@ Use this skill to help users build Chinese academic papers from traceable litera
 - Before searching, ask whether the user already has downloaded, exported, or copied literature data. Encourage them to paste or upload it first.
 - When the user mentions Zotero, BibTeX, RIS, EndNote, NoteExpress, or database exports, load `references/zotero_bibtex_ris_import.md` and guide them through export, paste/upload, parse, normalize, and metadata-check steps.
 - Use public sources or configured APIs to supplement only when the user-supplied corpus is too small, outdated, narrow, missing core works, or missing required metadata.
+- If the user has no literature, search public sources or configured APIs for candidate literature and produce a candidate matrix plus a clearly labeled "待核验版" review when enough traceable metadata is available.
 - Do not scrape CNKI, Wanfang, VIP, or school-library pages behind login, captcha, subscription, or paywall barriers. Process only materials the user lawfully provides or data returned by authorized interfaces.
 - A source may enter formal review paragraphs only when it has at least: author(s), title, journal/source name, publication date/year, and source/identifier. Otherwise keep it in "待核验候选文献".
 - Never invent citations, journal names, publication dates, findings, data, experiments, core-journal status, impact factors, review cycles, fees, or acceptance probabilities.
@@ -26,7 +27,7 @@ Use this skill to help users build Chinese academic papers from traceable litera
 1. **Intake**
    - Ask for the topic, research direction, keywords, paper type, target discipline, citation style, and any existing literature.
    - If the user has CNKI/Wanfang/VIP/library/journal/PDF data, process it first.
-   - If the user has no corpus, generate search terms and begin with public sources or configured APIs.
+   - If the user has no corpus, generate search terms, search public sources or configured APIs for candidate literature, and mark all found items as candidate or pending verification unless metadata is traceable.
 
 2. **Normalize Literature**
    - Convert imported or found records into a literature matrix.
@@ -45,6 +46,7 @@ Use this skill to help users build Chinese academic papers from traceable litera
    - Prefer OpenAlex, Crossref, Semantic Scholar, DOAJ, PubMed, journal websites, and configured authorized sources.
    - For CNKI/VIP/school libraries, generate search strings and export instructions rather than scraping.
    - Keep newly found items in "补充候选文献" until the user confirms them.
+   - When public-source candidate records contain enough metadata, generate a "待核验版" literature matrix, relationship analysis, gap analysis, and preliminary review paragraph. Do not call it final or formally verified until the user confirms sources.
    - Use `references/chinese_database_access.md` for source policy.
 
 5. **Build Literature Matrix**
@@ -98,7 +100,7 @@ Default response order for literature tasks:
 4. 研究脉络与逻辑关系
 5. 研究空白
 6. 可选创新点
-7. 去 AI 化后的中文综述段落
+7. 去 AI 化后的中文综述段落；若来源尚未由用户确认，标题必须标注为“待核验版”
 8. 待用户确认的问题
 9. 下一步建议
 

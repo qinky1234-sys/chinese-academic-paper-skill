@@ -19,13 +19,15 @@ If the user has no literature, ask for:
 - Target citation style
 - Required period, region, industry, sample, or method constraints
 
+Then generate search terms and use public sources or configured authorized APIs to find candidate literature when available. If candidate records have traceable metadata, the skill may produce a candidate matrix and a clearly labeled "待核验版" literature review. Do not present it as a final verified review until the user confirms the sources.
+
 ## Main Sequence
 
 1. Import and normalize user-supplied literature.
 2. For Zotero/BibTeX/RIS/database exports, identify the format, parse it, and normalize fields.
 3. Check whether required metadata exists.
 4. Assess coverage by count, year range, topic coverage, methods, and source diversity.
-5. Supplement from public sources or configured authorized APIs only when needed.
+5. Supplement from public sources or configured authorized APIs when the user has no literature or when imported literature is insufficient.
 6. Generate the literature matrix.
 7. Analyze shared themes and disagreements.
 8. Build the research timeline and relationship map.
@@ -66,5 +68,5 @@ For literature-review work, use this order unless the user asks for a narrower o
 5. 研究脉络与逻辑关系
 6. 研究空白
 7. 可选创新点
-8. 去 AI 化后的综述段落
+8. 去 AI 化后的综述段落；如果来源尚未由用户确认，标注为“待核验版”
 9. 需要用户确认的问题
