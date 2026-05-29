@@ -13,6 +13,7 @@ Use this skill to help users build Chinese academic papers from traceable litera
 
 - Treat user-supplied CNKI, Wanfang, VIP, school-library, journal-website, DOI, BibTeX, RIS, EndNote, NoteExpress, PDF excerpt, and copied citation data as the first source layer.
 - Before searching, ask whether the user already has downloaded, exported, or copied literature data. Encourage them to paste or upload it first.
+- When the user mentions Zotero, BibTeX, RIS, EndNote, NoteExpress, or database exports, load `references/zotero_bibtex_ris_import.md` and guide them through export, paste/upload, parse, normalize, and metadata-check steps.
 - Use public sources or configured APIs to supplement only when the user-supplied corpus is too small, outdated, narrow, missing core works, or missing required metadata.
 - Do not scrape CNKI, Wanfang, VIP, or school-library pages behind login, captcha, subscription, or paywall barriers. Process only materials the user lawfully provides or data returned by authorized interfaces.
 - A source may enter formal review paragraphs only when it has at least: author(s), title, journal/source name, publication date/year, and source/identifier. Otherwise keep it in "待核验候选文献".
@@ -31,6 +32,7 @@ Use this skill to help users build Chinese academic papers from traceable litera
    - Convert imported or found records into a literature matrix.
    - Required fields: authors, title, journal/source, published date/year, source status.
    - Preferred fields: abstract, keywords, method, object, key finding, limitation, DOI, URL, database.
+   - For Zotero/database exports, first identify whether the content is BibTeX (`@article{...}`), RIS (`TY  - JOUR` / `ER  -`), or plain copied records.
    - Use `scripts/parse_bibtex.py`, `scripts/parse_ris.py`, or `scripts/normalize_literature_matrix.py` when useful.
 
 3. **Assess Coverage**
@@ -103,6 +105,7 @@ Default response order for literature tasks:
 ## Resources
 
 - `references/workflow.md`: end-to-end workflow and response shapes.
+- `references/zotero_bibtex_ris_import.md`: user tutorial for importing Zotero, BibTeX, RIS, and Chinese database exports.
 - `references/literature_review.md`: matrix and Chinese literature review guidance.
 - `references/chinese_database_access.md`: CNKI/Wanfang/VIP/library/journal access boundaries.
 - `references/literature_relationship_analysis.md`: commonality, timeline, and relationship analysis.

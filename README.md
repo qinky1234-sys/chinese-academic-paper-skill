@@ -16,6 +16,7 @@
 ## What It Does
 
 - Prioritizes user-imported CNKI, Wanfang, VIP, school-library, journal-site, PDF, DOI, BibTeX, RIS, EndNote, and NoteExpress records.
+- Includes a Zotero/BibTeX/RIS import path so users can export literature from reference managers or Chinese databases before asking the skill to analyze it.
 - Supplements with public sources such as OpenAlex and Crossref when the imported corpus is insufficient.
 - Builds a literature matrix with author, title, journal/source, publication date, key finding, limitation, relationship, and source status.
 - Analyzes common themes, timeline, literature relationships, research gaps, and feasible innovation points.
@@ -50,6 +51,7 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill/tree/main/chinese-
 - [CNKI/万方/维普题录导入到文献矩阵](./examples/01-imported-records-to-matrix.md)
 - [从研究主题生成中文数据库检索策略](./examples/02-topic-to-search-strategy.md)
 - [从文献矩阵生成去 AI 化中文综述段落](./examples/03-matrix-to-review-paragraph.md)
+- [Zotero/BibTeX/RIS 导入教程](./examples/04-zotero-bibtex-ris-import.md)
 
 ### 1. CNKI/Wanfang/VIP records to matrix
 
@@ -91,6 +93,19 @@ Expected output:
 - 引用标记
 - 不确定内容的 TODO 核验提示
 
+### 4. Zotero/BibTeX/RIS import
+
+```text
+我在 Zotero 里有一批文献，想导出给这个 skill。请告诉我应该导出什么格式，以及你收到后会怎么处理。
+```
+
+Expected output:
+
+- Zotero 导出步骤
+- BibTeX/RIS 选择建议
+- 导入后的字段核验规则
+- 文献矩阵生成入口
+
 ## Boundaries
 
 This skill does not fabricate references, data, experiments, journal rankings, impact factors, review cycles, fees, or acceptance probabilities. It does not scrape CNKI, Wanfang, VIP, or school-library pages behind login, captcha, subscription, or paywall barriers. It only processes user-provided materials, public sources, or authorized interfaces.
@@ -112,6 +127,7 @@ This skill does not fabricate references, data, experiments, journal rankings, i
 ## Version Plan
 
 - v0.1: user import, public-source supplement, literature matrix, relationship analysis, innovation points, de-AI Chinese review paragraphs, basic journal recommendations.
+- v0.1.3: Zotero/BibTeX/RIS import tutorial and example workflow.
 - v0.2: authorized Wanfang integration through a backend service, paid quota, stronger Chinese metadata verification, enhanced relationship analysis.
 - v0.3+: better CNKI/VIP/library import workflows, more export formats, journal-site public metadata extraction.
 

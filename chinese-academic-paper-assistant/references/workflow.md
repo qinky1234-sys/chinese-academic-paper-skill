@@ -4,6 +4,12 @@
 
 Start by asking the user to provide any existing literature they already have. Mention CNKI, Wanfang, VIP, school-library databases, journal websites, downloaded PDFs, DOI lists, BibTeX, RIS, EndNote, NoteExpress, copied abstracts, and copied citation records.
 
+If the user is unsure how to provide records, offer the Zotero/BibTeX/RIS path:
+
+- Zotero: select references, right-click, export items, choose BibTeX or RIS, then paste/upload the file content.
+- CNKI/Wanfang/VIP/library/journal sites: use the database's own export/citation function, prefer RIS or BibTeX when available, then paste/upload the exported text.
+- Manual fallback: paste author, title, journal/source, year/date, abstract, keywords, DOI/URL, and database/source.
+
 If the user has no literature, ask for:
 
 - Paper topic
@@ -16,17 +22,18 @@ If the user has no literature, ask for:
 ## Main Sequence
 
 1. Import and normalize user-supplied literature.
-2. Check whether required metadata exists.
-3. Assess coverage by count, year range, topic coverage, methods, and source diversity.
-4. Supplement from public sources or configured authorized APIs only when needed.
-5. Generate the literature matrix.
-6. Analyze shared themes and disagreements.
-7. Build the research timeline and relationship map.
-8. Identify research gaps.
-9. Propose feasible innovation points.
-10. Write de-AI Chinese review paragraphs with citations.
-11. Recommend journals if requested.
-12. Run final integrity checks.
+2. For Zotero/BibTeX/RIS/database exports, identify the format, parse it, and normalize fields.
+3. Check whether required metadata exists.
+4. Assess coverage by count, year range, topic coverage, methods, and source diversity.
+5. Supplement from public sources or configured authorized APIs only when needed.
+6. Generate the literature matrix.
+7. Analyze shared themes and disagreements.
+8. Build the research timeline and relationship map.
+9. Identify research gaps.
+10. Propose feasible innovation points.
+11. Write de-AI Chinese review paragraphs with citations.
+12. Recommend journals if requested.
+13. Run final integrity checks.
 
 ## Source Status
 
@@ -53,10 +60,11 @@ Recommend supplementing when:
 For literature-review work, use this order unless the user asks for a narrower output:
 
 1. 文献接收与缺口说明
-2. 文献矩阵
-3. 文献共同点
-4. 研究脉络与逻辑关系
-5. 研究空白
-6. 可选创新点
-7. 去 AI 化后的综述段落
-8. 需要用户确认的问题
+2. 导入格式识别与字段核验
+3. 文献矩阵
+4. 文献共同点
+5. 研究脉络与逻辑关系
+6. 研究空白
+7. 可选创新点
+8. 去 AI 化后的综述段落
+9. 需要用户确认的问题
