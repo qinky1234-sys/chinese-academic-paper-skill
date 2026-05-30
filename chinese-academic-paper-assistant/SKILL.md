@@ -7,7 +7,7 @@ description: Chinese academic paper assistant for verifiable Chinese literature 
 
 ## Overview
 
-Use this skill to help users build Chinese academic papers from traceable literature. The default workflow is: collect/import literature, supplement only when needed, create a first-upload claim map when the user provides a new corpus, build a literature matrix, analyze relationships, optionally build a research-field knowledge map, identify research gaps, propose innovation points with closest-paper and methodology notes, then write de-AI Chinese literature-review paragraphs and recommend journals with verification caveats.
+Use this skill to help users build Chinese academic papers from traceable literature. The default workflow is: collect/import literature, supplement only when needed, create a first-upload claim map when the user provides a new corpus, build a literature matrix, analyze relationships, optionally build a research-field knowledge map, identify research gaps, propose innovation points with closest-paper and methodology notes, write de-AI Chinese review paragraphs, recommend journals with verification caveats when needed, and append a final full textual literature-review section as the last substantive output.
 
 ## Hard Rules
 
@@ -21,6 +21,7 @@ Use this skill to help users build Chinese academic papers from traceable litera
 - A source may enter formal review paragraphs only when it has at least: author(s), title, journal/source name, publication date/year, and source/identifier. Otherwise keep it in "待核验候选文献".
 - When the user first uploads a literature corpus, or when public-source candidate literature is found for a user with no corpus, first produce an author-year-one-sentence-claim table, group papers by shared assumptions, mark clear contradictions/tensions, and create a macro background map before writing review paragraphs. Public-source candidate items must remain clearly labeled as pending verification.
 - When generating innovation points, include the closest 1-3 papers for each point and a suitable methodology suggestion. Closest papers must come from user-supplied, verified, or clearly labeled public-source candidate literature.
+- At the end of every full literature workflow, append a complete textual literature-review section without changing the earlier output modules. It must work for both user-imported literature and public-source candidate literature. If the sources are candidates, title it "待核验版完整版文字式文献综述" and keep every citation/source status visibly pending verification.
 - Never invent citations, journal names, publication dates, findings, data, experiments, core-journal status, impact factors, review cycles, fees, or acceptance probabilities.
 - If author, title, journal/source, year/date, DOI, URL, abstract, or citation metadata is missing or uncertain, mark the item as pending verification instead of completing the field from imagination.
 - Do not use phrases such as "无人研究", "首次提出", "绝对创新", or "填补空白" as factual claims. Use cautious wording such as "在当前文献范围内较少发现", "仍需进一步核验", or "可作为潜在切入点".
@@ -110,12 +111,23 @@ Use this skill to help users build Chinese academic papers from traceable litera
    - Mark PKU core, CSSCI, CSCD, impact factor, fee, review cycle, and acceptance rate as requiring user verification unless the user provides authoritative current evidence.
    - See `references/journal_finder.md`.
 
-13. **Final Check**
+13. **Generate Final Full Textual Literature Review**
+   - Always include this section as the last substantive output of a full workflow. Do not replace, remove, merge, or reorder earlier modules such as matrix, relationship analysis, knowledge map, gap analysis, innovation points, de-AI paragraph, journal matching, confirmation questions, or next-step suggestions; only append this final section.
+   - Title it "完整版文字式文献综述" for user-confirmed/verified literature, or "待核验版完整版文字式文献综述" when any literature comes from public-source candidates or incomplete metadata.
+   - Use the sentence pattern the user requested, such as: `XXX学者在《xxxxx》一文中提出/指出/认为/发现……`.
+   - Cover every source that has been found and placed in the literature matrix or candidate list. Do not select only representative papers. If there are too many sources, group them by theme but still mention each paper once with author(s), title, journal/source name when available, publication year/date, and the specific viewpoint or finding that can be supported by the matrix, abstract, keywords, conclusion, or user-provided excerpt.
+   - Organize paragraphs by theme, timeline, method, object/scenario, or controversy. Do not simply list papers; connect them with "在此基础上", "与之不同", "进一步转向", "从另一个角度补充", or "这一判断仍需核验" only when the matrix supports that relation.
+   - For public-source candidate literature, write cautious formulations such as "候选记录显示", "从题名和摘要信息看", and "正式使用前仍需核验". Do not present candidate literature as final verified evidence.
+   - End with a short synthesis that explains the common contribution, unresolved issue, and how the user's possible research can enter the discussion. Avoid unsupported claims such as "无人研究" or "首次提出".
+   - Use `assets/full_textual_literature_review_template.md`.
+
+14. **Final Check**
    - Validate citations with `scripts/validate_citations.py` when a matrix and draft text are available.
    - Confirm no unverified source entered formal paragraphs.
    - Confirm no fabricated findings, data, or journal claims.
    - Confirm all public-source candidate records are still marked "待核验" unless the user explicitly supplied verification details.
    - Confirm every innovation point has closest-paper, methodology, data/material, suitability, and risk fields when the user asks for innovation analysis.
+   - Confirm the final full textual literature-review section uses only sources from the matrix/candidate list and keeps candidate sources labeled as pending verification.
    - Use `assets/final_checklist.md`.
 
 ## Output Order
@@ -136,6 +148,7 @@ Default response order for literature tasks:
 12. 去 AI 化后的中文综述段落；若来源尚未由用户确认，标题必须标注为“待核验版”
 13. 待用户确认的问题
 14. 下一步建议
+15. 完整版文字式文献综述；作为最后追加模块输出，所有已经找到并进入矩阵或候选表的文献都必须对应写到，逐篇或分主题写明“XXX学者在《xxxxx》一文中提出/指出/认为……”，若来源尚未由用户确认，标题必须标注为“待核验版完整版文字式文献综述”
 
 ## Resources
 
@@ -143,6 +156,7 @@ Default response order for literature tasks:
 - `references/output_modes.md`: 本科论文、硕士论文、期刊论文三种输出模式.
 - `references/zotero_bibtex_ris_import.md`: user tutorial for importing Zotero, BibTeX, RIS, and Chinese database exports.
 - `references/literature_review.md`: matrix and Chinese literature review guidance.
+- `assets/full_textual_literature_review_template.md`: final full textual literature-review section template.
 - `assets/first_upload_claim_map_template.md`: first-upload author-year claim table, shared-assumption grouping, contradiction/tension markers, and macro background map.
 - `references/chinese_database_access.md`: CNKI/Wanfang/VIP/library/journal access boundaries.
 - `references/literature_relationship_analysis.md`: commonality, timeline, and relationship analysis.
