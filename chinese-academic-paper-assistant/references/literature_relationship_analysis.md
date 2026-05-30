@@ -38,3 +38,6 @@ Do not claim direct reference/citation without citation metadata. If only chrono
 > 从发表时间和研究内容看，后续研究可能承接了前文的问题意识或分析框架，但是否存在直接引用关系仍需进一步核验。
 
 When source abstracts are missing, mark relationship claims as tentative.
+# One-Click Review Note
+
+In one-click review mode, relationship analysis should be used internally to improve the final literature review wording. Do not output a separate relationship-analysis section unless the user asks for it.

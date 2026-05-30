@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Normalize JSON literature records and report missing required fields."""
+"""Normalize records for matrices and one-click literature review coverage checks."""
 
 from __future__ import annotations
 

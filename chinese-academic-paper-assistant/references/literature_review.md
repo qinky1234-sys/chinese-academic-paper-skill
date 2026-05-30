@@ -1,5 +1,17 @@
 # Literature Review
 
+## One-Click Review Mode
+
+Use this mode when the user wants 一键生成文献综述, 一键综述, 直接生成综述, 只要最终综述, or 不用其他功能.
+
+Output only:
+
+1. 完整版文字式文献综述
+2. 文献覆盖简表
+3. 必要核验提醒
+
+Do not show the full matrix, knowledge map, innovation points, journal matching, or long process notes unless the user requests them. Recommend 8+ usable sources; if fewer are available, generate the draft but state that coverage is limited.
+
 ## Matrix Fields
 
 Use these columns by default:
@@ -23,6 +35,8 @@ Choose one dominant organization and say why:
 
 Chinese review paragraphs should:
 
+- In one-click mode, cover every uploaded or found source at least once.
+- Use expressions like `XXX学者在《xxxxx》一文中提出/指出/认为……`.
 - Begin from a concrete research problem rather than a generic era statement.
 - Move from established work to unresolved problems.
 - Cite each claim that depends on literature.

@@ -2,6 +2,8 @@
 
 Use this reference when the user wants to import literature from Zotero, CNKI, Wanfang, VIP, school-library databases, journal websites, EndNote, NoteExpress, BibTeX, or RIS.
 
+If the user's goal is 一键生成文献综述, treat Zotero/BibTeX/RIS import as the fastest path into one-click review mode: parse the records, check whether there are 8+ usable sources, then output the complete literature review plus coverage table.
+
 ## User-Facing Import Path
 
 Tell the user they can provide literature in any of these forms:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse a small BibTeX file into normalized JSON records."""
+"""Parse BibTeX into normalized JSON records for matrices and one-click reviews."""
 
 from __future__ import annotations
 

@@ -2,7 +2,7 @@
 
 ## 推荐标题
 
-我做了一个中文论文文献综述 Codex Skill：没有文献也能先生成检索策略和待核验综述
+我做了一个中文论文文献综述 Codex Skill：上传 8 篇文献就能一键生成完整综述
 
 ## 正文
 
@@ -10,7 +10,7 @@
 
 https://github.com/qinky1234-sys/chinese-academic-paper-skill
 
-它的目标不是“自动代写论文”，而是把 AI 写作前最容易出问题的一步先做扎实：真实文献整理、文献矩阵、研究脉络、研究空白和创新点分析。
+它的目标不是“自动代写论文”，而是把 AI 写作前最容易出问题的一步先做扎实：真实文献整理，然后一键生成完整文献综述和文献覆盖简表。
 
 ## 它能解决什么问题
 
@@ -28,6 +28,7 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill
 
 - 支持用户导入 CNKI、万方、维普、学校图书馆、期刊官网、Zotero、BibTeX、RIS、PDF 摘要等文献资料。
 - 用户没有文献时，也可以根据论文主题从公开来源查找候选文献，并生成待核验版文献矩阵和初步综述。
+- 一键综述模式下，可以只输出完整文献综述、文献覆盖简表和必要核验提醒，不展开复杂过程。
 - 首次上传文献或从公开来源找到候选文献后，生成“作者+年份+一句话核心主张”表。
 - 按共同假设分组，标记互相矛盾或存在张力的论文，并绘制宏观背景图。
 - 生成文献矩阵：作者、年份、题名、期刊、摘要、关键词、方法、结论、局限。
@@ -58,7 +59,7 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill
 
 仓库里已经放了完整中文演示案例：
 
-https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/08-full-chinese-workflow-demo.md
+https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/10-one-click-literature-review.md
 
 以及三种输出模式示例：
 

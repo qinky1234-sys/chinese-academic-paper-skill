@@ -2,7 +2,7 @@
 
 ## 知乎文章/回答标题
 
-如何避免 AI 写文献综述时编造参考文献？
+如何用 AI 一键生成文献综述，同时避免编造参考文献？
 
 ## 知乎正文
 
@@ -14,11 +14,12 @@
 
 https://github.com/qinky1234-sys/chinese-academic-paper-skill
 
-它的思路是：先整理真实文献，再生成综述。
+它的主入口是：上传 8 篇以上文献，或在没有文献时先查找公开候选文献，然后一键生成完整文献综述和文献覆盖简表。
 
 它可以做：
 
 - 把 CNKI、万方、维普、学校图书馆、期刊官网、Zotero、BibTeX、RIS 或 PDF 摘要整理成文献矩阵。
+- 一键综述模式下，只输出完整文献综述、文献覆盖简表和必要核验提醒。
 - 没有文献时，根据论文主题生成中文数据库检索策略。
 - 从公开来源补充候选文献，但统一标注为“待核验”。
 - 生成作者+年份+一句话核心主张表。
@@ -29,7 +30,7 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill
 
 我把完整示例放在这里：
 
-https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/08-full-chinese-workflow-demo.md
+https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/10-one-click-literature-review.md
 
 这个工具不会做这些事：
 
@@ -50,7 +51,7 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples
 
 ## 小红书标题备选
 
-1. 写论文别先让 AI 写综述，先让它做文献矩阵
+1. 上传 8 篇文献，一键生成论文文献综述
 2. AI 写论文最容易翻车的地方：参考文献是假的
 3. 没有文献怎么开始写综述？我做了个开源工具
 
@@ -62,6 +63,7 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples
 
 - 没有文献：先生成 CNKI/万方/维普/学校图书馆检索策略
 - 有文献：整理成文献矩阵
+- 一键综述：直接生成完整文献综述 + 文献覆盖简表
 - 首次上传：生成作者+年份+一句话核心主张表
 - 继续分析：研究脉络、知识地图、研究空白、创新点
 - 创新点：标记最接近论文和推荐方法论
@@ -76,4 +78,3 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples
 https://github.com/qinky1234-sys/chinese-academic-paper-skill
 
 适合本科论文、硕士开题、课程论文、中文期刊论文前期准备。
-

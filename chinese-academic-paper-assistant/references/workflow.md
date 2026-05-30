@@ -23,6 +23,16 @@ Then generate search terms and use public sources or configured authorized APIs 
 
 ## Main Sequence
 
+If the user asks for 一键生成文献综述, 一键综述, 直接生成综述, 只要最终综述, or 不用其他功能, use the one-click review sequence instead of the full analytical sequence:
+
+1. Identify whether the user uploaded literature or needs public candidate search.
+2. Check source count and metadata. Recommend 8+ usable sources for a stronger review.
+3. Generate a complete textual literature review that covers every source.
+4. Append a literature coverage table.
+5. Add only necessary verification reminders.
+
+Do not output the full matrix, knowledge map, innovation points, journal matching, or other advanced modules in one-click review mode unless the user explicitly asks for them.
+
 1. Import and normalize user-supplied literature.
 2. For Zotero/BibTeX/RIS/database exports, identify the format, parse it, and normalize fields.
 3. Check whether required metadata exists.
@@ -58,6 +68,13 @@ Recommend supplementing when:
 - The topic has obvious subfields not represented in the matrix.
 
 ## Required Response Shape
+
+For one-click review work, use this order:
+
+1. 综述状态说明（已核验版/待核验版；文献数量是否达到 8 篇建议线）
+2. 完整版文字式文献综述
+3. 文献覆盖简表
+4. 必要核验提醒
 
 For literature-review work, use this order unless the user asks for a narrower output:
 

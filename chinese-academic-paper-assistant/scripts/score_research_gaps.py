@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Heuristically flag possible literature coverage gaps from a matrix."""
+"""Flag possible coverage gaps after one-click review when deeper analysis is requested."""
 
 from __future__ import annotations
 

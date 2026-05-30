@@ -5,6 +5,7 @@
 ## 已准备素材
 
 - GitHub 仓库首页：README 已改成产品首页。
+- 一键综述示例：`examples/10-one-click-literature-review.md`
 - 示例案例：`examples/05-full-chinese-demo-case.md`
 - 三种输出模式：`examples/06-output-modes-demo.md`
 - 新手文档：`docs/getting-started.md`
@@ -19,7 +20,7 @@
 
 2. GitHub 中文社区类项目展示网站
    - 适合提交项目链接，等待编辑或系统收录。
-   - 重点突出“中文学术写作”“文献矩阵”“不编造引用”。
+   - 重点突出“一键生成完整文献综述”“中文学术写作”“不编造引用”。
 
 3. GitHub Topics
    - 通过 topics 提高搜索发现概率。
@@ -39,6 +40,7 @@
 ## 推荐卖点
 
 - 先整理真实文献，再写综述。
+- 上传 8 篇以上文献，一键生成完整文献综述和文献覆盖简表。
 - 用户没有文献时，也可以先查找公开候选文献并生成待核验版综述。
 - 支持 Zotero、BibTeX、RIS、CNKI、万方、维普题录导入。
 - 支持本科、硕士、期刊论文三种输出模式。

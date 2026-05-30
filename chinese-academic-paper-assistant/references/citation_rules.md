@@ -26,3 +26,6 @@ Prefer DOI, official journal page, database record, Crossref, OpenAlex, or user-
 ## Numbered References
 
 If using numbered citations, assign numbers only after the user confirms the matrix. If the matrix changes, renumber all citations.
+# One-Click Review Note
+
+In 一键生成文献综述 mode, every cited paper in the final review must appear in the coverage table. Public-source candidate papers must remain marked 待核验 and must not be written as confirmed formal citations.

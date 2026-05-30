@@ -2,7 +2,7 @@
 
 ## 标题
 
-做了一个中文论文文献综述 Codex Skill：没有文献也能先生成检索策略和待核验综述
+做了一个中文论文文献综述 Codex Skill：上传 8 篇文献就能一键生成完整综述
 
 ## 正文
 
@@ -12,11 +12,12 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill
 
 它不是“自动代写论文”的工具，我更想解决的是另一个更基础的问题：很多人用 AI 写文献综述时，第一步就容易出错，比如参考文献被编造、作者年份对不上、综述只有模板话、创新点很空。
 
-这个项目的工作方式是：先整理真实文献，再生成综述。
+这个项目现在的主入口是：上传 8 篇以上文献，或者没有文献时先让它查找公开候选文献，然后一键生成完整文献综述和文献覆盖简表。
 
 目前能做的事情：
 
 - 已经有文献时：支持把 CNKI、万方、维普、学校图书馆、期刊官网、Zotero、BibTeX、RIS、PDF 摘要等资料整理成文献矩阵。
+- 一键综述模式：只输出完整文献综述、文献覆盖简表和必要核验提醒，不展开复杂过程。
 - 没有文献时：先根据主题生成 CNKI、万方、维普、学校图书馆和期刊官网的检索策略，再从公开来源补充候选文献。
 - 对候选文献统一标记“待核验”，不把它们直接写成正式引用。
 - 首次上传或首次找到候选文献时，生成“作者+年份+一句话核心主张”表。
@@ -33,9 +34,9 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill
 - 不承诺查重、AI 检测、期刊录用。
 - 没有引用证据时，不直接说“谁引用了谁”。
 
-完整演示在这里，不安装也能先看效果：
+一键生成文献综述示例在这里，不安装也能先看效果：
 
-https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/08-full-chinese-workflow-demo.md
+https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/10-one-click-literature-review.md
 
 项目地址：
 
@@ -47,4 +48,3 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill
 - CNKI/万方/维普/Zotero 的导入路径是否足够清楚？
 - 文献矩阵、研究脉络、创新点这些输出是否符合真实写论文习惯？
 - 后面做 Pro 版的话，万方授权接口、批量文献分析、Word 导出、相似度评分，哪个更值得优先？
-

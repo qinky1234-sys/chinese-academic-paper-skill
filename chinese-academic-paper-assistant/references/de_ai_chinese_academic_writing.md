@@ -49,3 +49,6 @@ Write:
 ```text
 数字技术进入乡村治理后，基层治理的议题逐渐从资源投入转向主体协同、数据使用和公共服务响应能力。
 ```
+# One-Click Review Note
+
+In 一键生成文献综述 mode, apply de-AI rewriting directly to the final complete literature review so the output reads like usable Chinese academic prose while preserving citations and source status.

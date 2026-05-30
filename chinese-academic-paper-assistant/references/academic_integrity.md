@@ -31,3 +31,6 @@ Use labels:
 - `公开元数据可核验`
 - `缺摘要，不能支持正文判断`
 - `候选文献，暂不进入正文`
+# One-Click Review Note
+
+一键生成文献综述 is allowed only when the output remains traceable to uploaded, verified, or clearly marked candidate literature. Do not frame the skill as a full-paper ghostwriter or a way to bypass academic review.

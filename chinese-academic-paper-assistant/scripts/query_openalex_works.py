@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Query OpenAlex works and output normalized candidate literature records."""
+"""Query OpenAlex works for candidate records used in one-click review drafts."""
 
 from __future__ import annotations
 

@@ -42,3 +42,6 @@ Backend responsibilities:
   ]
 }
 ```
+# One-Click Review Note
+
+Future authorized Wanfang access may support the one-click review workflow by improving candidate discovery and metadata verification. Until configured, one-click review must rely on user-imported records or public-source candidates marked 待核验.

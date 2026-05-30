@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a simple chronological timeline from a normalized literature matrix."""
+"""Build a timeline that can inform one-click literature review wording."""
 
 from __future__ import annotations
 

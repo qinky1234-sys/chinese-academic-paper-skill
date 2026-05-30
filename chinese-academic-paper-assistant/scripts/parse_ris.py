@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse RIS records into normalized JSON."""
+"""Parse RIS into normalized JSON records for matrices and one-click reviews."""
 
 from __future__ import annotations
 

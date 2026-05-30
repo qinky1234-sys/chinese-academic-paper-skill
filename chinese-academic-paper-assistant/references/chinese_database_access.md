@@ -4,6 +4,8 @@
 
 Use user-imported Chinese database records first. Do not scrape CNKI, Wanfang, VIP, school-library databases, or paywalled journal pages without authorization.
 
+For 一键生成文献综述, ask the user to upload or paste 8+ exported records when possible. If the user has no literature, generate public-source candidates and output only a clearly labeled 待核验版完整文献综述 plus coverage table.
+
 Accept these user-provided inputs:
 
 - CNKI, Wanfang, VIP, school library, or journal website export records.

@@ -4,6 +4,8 @@ Use this reference when the user asks for 本科论文模式, 硕士论文模式
 
 ## Mode Selection
 
+One-click review mode can be combined with any paper mode. When the user asks to 一键生成文献综述, apply the selected paper mode to tone and depth, but keep the output narrow: 完整文献综述 + 文献覆盖简表 + 必要核验提醒.
+
 If the user does not specify a mode, ask for the paper type when the answer would materially change depth or structure. If the user wants a quick first pass, default to 硕士论文模式 only when the topic is explicitly graduate-level; otherwise default to 本科论文模式.
 
 Supported modes:
@@ -43,6 +45,12 @@ Required output:
 7. 约 600-900 字中文综述段落
 8. 下一步补充文献建议
 
+One-click version:
+
+1. 600-900 字左右完整文献综述
+2. 文献覆盖简表
+3. 必要核验提醒
+
 Innovation-point standard:
 
 - Prefer topic angle, case selection, local sample, comparison object, or application scenario.
@@ -79,6 +87,12 @@ Required output:
 9. 可放入开题报告或论文绪论的过渡句
 10. 待核验问题与补充检索建议
 
+One-click version:
+
+1. 1000-1500 字左右完整文献综述
+2. 文献覆盖简表
+3. 必要核验提醒
+
 Innovation-point standard:
 
 - Each point must include existing basis, unresolved issue, user's possible approach, required data/materials, and suitable chapter.
@@ -112,6 +126,12 @@ Required output:
 6. 约 500-900 字引言式文献综述
 7. 贡献表述候选句
 8. 期刊匹配提醒与人工核验事项
+
+One-click version:
+
+1. 500-900 字左右引言式完整文献综述
+2. 文献覆盖简表
+3. 必要核验提醒
 
 Innovation-point standard:
 

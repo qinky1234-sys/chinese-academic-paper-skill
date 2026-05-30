@@ -53,3 +53,6 @@ Flag:
 - Missing ISSN or fake metrics.
 - Submission page detached from official journal domain.
 - Excessive fees without transparent policy.
+# One-Click Review Note
+
+Do not recommend journals by default in 一键生成文献综述 mode. The default output should remain 完整文献综述 + 文献覆盖简表 + 必要核验提醒.

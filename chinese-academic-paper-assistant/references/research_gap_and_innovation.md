@@ -1,5 +1,7 @@
 # Research Gap and Innovation
 
+In one-click review mode, do not output research gaps or innovation points by default. Mention this module only if the user asks to continue after the complete literature review.
+
 ## Gap Categories
 
 Check these categories:

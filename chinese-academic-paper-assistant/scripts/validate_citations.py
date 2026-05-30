@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check whether draft citations appear to match records in a literature matrix."""
+"""Check whether one-click review citations match records in a literature matrix."""
 
 from __future__ import annotations
 
