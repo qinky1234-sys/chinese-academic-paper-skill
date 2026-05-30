@@ -45,6 +45,7 @@
 
 - [新手使用文档](./docs/getting-started.md)
 - [复制即用提示词模板](./docs/copy-paste-prompts.md)
+- [常见问题 FAQ](./docs/faq.md)
 - [示例输入与输出](./examples/README.md)
 
 最小可用提示词：
