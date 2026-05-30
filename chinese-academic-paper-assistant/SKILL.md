@@ -16,12 +16,14 @@ Use this skill to help users build Chinese academic papers from traceable litera
 - When the user mentions Zotero, BibTeX, RIS, EndNote, NoteExpress, or database exports, load `references/zotero_bibtex_ris_import.md` and guide them through export, paste/upload, parse, normalize, and metadata-check steps.
 - Use public sources or configured APIs to supplement only when the user-supplied corpus is too small, outdated, narrow, missing core works, or missing required metadata.
 - If the user has no literature, search public sources or configured APIs for candidate literature and produce a candidate matrix plus a clearly labeled "待核验版" review when enough traceable metadata is available.
+- When the user asks for 一键生成文献综述, 一键综述, 直接生成综述, 只要最终综述, 不用其他功能, or similar wording, enter one-click review mode: internally perform only the checks needed to avoid fabrication, then output a complete textual literature review plus a literature coverage table and necessary verification notes. Do not output knowledge maps, innovation points, journal recommendations, or detailed matrices unless the user also asks for them.
 - When the user specifies 本科论文, 硕士论文, or 期刊论文, load `references/output_modes.md` and adapt depth, structure, review length, innovation-point expectations, and final check standards to that mode.
 - Do not scrape CNKI, Wanfang, VIP, or school-library pages behind login, captcha, subscription, or paywall barriers. Process only materials the user lawfully provides or data returned by authorized interfaces.
 - A source may enter formal review paragraphs only when it has at least: author(s), title, journal/source name, publication date/year, and source/identifier. Otherwise keep it in "待核验候选文献".
 - When the user first uploads a literature corpus, or when public-source candidate literature is found for a user with no corpus, first produce an author-year-one-sentence-claim table, group papers by shared assumptions, mark clear contradictions/tensions, and create a macro background map before writing review paragraphs. Public-source candidate items must remain clearly labeled as pending verification.
 - When generating innovation points, include the closest 1-3 papers for each point and a suitable methodology suggestion. Closest papers must come from user-supplied, verified, or clearly labeled public-source candidate literature.
 - At the end of every full literature workflow, append a complete textual literature-review section without changing the earlier output modules. It must work for both user-imported literature and public-source candidate literature. If the sources are candidates, title it "待核验版完整版文字式文献综述" and keep every citation/source status visibly pending verification.
+- Recommend 8+ sources for a stronger one-click review. If fewer than 8 sources are available, still generate the review when asked, but clearly state that coverage is limited and recommend supplementing literature before formal use.
 - Never invent citations, journal names, publication dates, findings, data, experiments, core-journal status, impact factors, review cycles, fees, or acceptance probabilities.
 - If author, title, journal/source, year/date, DOI, URL, abstract, or citation metadata is missing or uncertain, mark the item as pending verification instead of completing the field from imagination.
 - Do not use phrases such as "无人研究", "首次提出", "绝对创新", or "填补空白" as factual claims. Use cautious wording such as "在当前文献范围内较少发现", "仍需进一步核验", or "可作为潜在切入点".
@@ -34,28 +36,37 @@ Use this skill to help users build Chinese academic papers from traceable litera
    - Ask for the topic, research direction, keywords, paper type, target discipline, citation style, and any existing literature.
    - If the user has CNKI/Wanfang/VIP/library/journal/PDF data, process it first.
    - If the user has no corpus, generate search terms, search public sources or configured APIs for candidate literature, and mark all found items as candidate or pending verification unless metadata is traceable.
+   - For one-click review mode, do not ask the user to choose among advanced modules. Use the provided topic and literature, or search public candidate literature if no corpus is provided, then produce the final review-oriented output.
 
-2. **Normalize Literature**
+2. **One-Click Review Mode**
+   - Trigger when the user asks for a one-click, direct, final, or no-extra-functions literature review.
+   - Default output order: title/status note, complete textual literature review, literature coverage table, and necessary verification reminders.
+   - Use "完整版文字式文献综述" when literature is user-confirmed or verified. Use "待核验版完整版文字式文献综述" when using public-source candidates or incomplete metadata.
+   - Cover every available source in the review text. Use patterns such as `XXX学者在《xxxxx》一文中提出/指出/认为……`.
+   - Add a coverage table with columns: 文献, 是否写入综述, 正文位置, 核验状态.
+   - Avoid outputting the full matrix, knowledge map, innovation points, or journal matching unless requested.
+
+3. **Normalize Literature**
    - Convert imported or found records into a literature matrix.
    - Required fields: authors, title, journal/source, published date/year, source status.
    - Preferred fields: abstract, keywords, method, object, key finding, limitation, DOI, URL, database.
    - For Zotero/database exports, first identify whether the content is BibTeX (`@article{...}`), RIS (`TY  - JOUR` / `ER  -`), or plain copied records.
    - Use `scripts/parse_bibtex.py`, `scripts/parse_ris.py`, or `scripts/normalize_literature_matrix.py` when useful.
 
-3. **Assess Coverage**
+4. **Assess Coverage**
    - Fewer than 8 sources: normally insufficient for a formal review; recommend supplementing.
    - 8-15 sources: enough for an initial review if topic coverage is balanced.
    - 15+ sources: usually enough for a fuller review, still check recency and scope.
    - Supplement when sources lack recent work from the last 3-5 years, classic works, key methods, or competing views.
 
-4. **Supplement Search**
+5. **Supplement Search**
    - Prefer OpenAlex, Crossref, Semantic Scholar, DOAJ, PubMed, journal websites, and configured authorized sources.
    - For CNKI/VIP/school libraries, generate search strings and export instructions rather than scraping.
    - Keep newly found items in "补充候选文献" until the user confirms them.
    - When public-source candidate records contain enough metadata, generate a "待核验版" literature matrix, relationship analysis, gap analysis, and preliminary review paragraph. Do not call it final or formally verified until the user confirms sources.
    - Use `references/chinese_database_access.md` for source policy.
 
-5. **First-Corpus Claim and Background Map**
+6. **First-Corpus Claim and Background Map**
    - When the user first uploads related literature, or when the skill finds public-source candidate literature for a user with no corpus, output a table with each article's author(s)+year and one-sentence core claim.
    - If the literature comes from public sources rather than user-confirmed records, title the output "待核验版首批文献主张与宏观背景图".
    - The one-sentence core claim must be grounded in title, abstract, keywords, conclusion, or user-provided excerpt. If evidence is insufficient, mark it "待核验".
@@ -65,25 +76,25 @@ Use this skill to help users build Chinese academic papers from traceable litera
    - Keep this as an open-source baseline capability. Do not claim automated contradiction scoring, citation-network visualization, or dynamic graph generation unless those tools are actually configured.
    - Use `assets/first_upload_claim_map_template.md`.
 
-6. **Build Literature Matrix**
+7. **Build Literature Matrix**
    - Output a table using `assets/literature_matrix_template.md`.
    - Include source status values such as `user_imported`, `public_api_verified`, `needs_manual_verification`.
    - Exclude incomplete records from formal paragraphs.
 
-7. **Analyze Relationships**
+8. **Analyze Relationships**
    - Summarize common themes, objects, theories, methods, findings, and disagreements.
    - Build a time-based research timeline.
    - Analyze inheritance, extension, contrast, correction, method transfer, or scenario transfer.
    - Use `references/literature_relationship_analysis.md` and `scripts/build_literature_timeline.py`.
 
-8. **Build a Research-Field Knowledge Map**
+9. **Build a Research-Field Knowledge Map**
    - When the user asks for a 研究领域知识地图, 知识图谱, 核心主张, 支持柱, 争议区, 前沿问题, or 初学者必读论文, output a clean table-based knowledge map.
    - Include: one core claim, 3-5 support pillars, 2-3 controversy zones, 1-2 frontier questions, and beginner must-read papers with reasons.
    - Base the map only on verified/user-supplied literature or clearly labeled public-source candidates.
    - If sources are not fully verified, title the section "待核验版研究领域知识地图".
    - Use `assets/knowledge_map_template.md`.
 
-9. **Find Research Gaps and Innovation Points**
+10. **Find Research Gaps and Innovation Points**
    - Identify object, method, scenario, data, theory, time-period, mechanism, and application gaps.
    - Generate 3-5 feasible innovation points.
    - Each point must explain: existing basis, unresolved issue, closest 1-3 papers, similarity to those papers, possible differentiation or extension, suggested methodology, required data/materials, suitable paper type, and paper section.
@@ -93,25 +104,25 @@ Use this skill to help users build Chinese academic papers from traceable litera
    - Use cautious language: "在当前已检索文献范围内较少发现" rather than "没有人做过".
    - See `references/research_gap_and_innovation.md` and `assets/innovation_closest_papers_template.md`.
 
-10. **Write Review Paragraphs**
+11. **Write Review Paragraphs**
    - Write Chinese introduction/literature-review paragraphs only after the matrix and gap analysis.
    - Use citation markers such as `张三等（2023）`, `（张三，2023）`, or the user's requested style.
    - Do not copy source text verbatim; synthesize and paraphrase from verified metadata/abstracts/user-provided excerpts.
    - Match the paper mode: 本科论文 emphasizes clarity and basic classification; 硕士论文 emphasizes research lineage, gaps, and method feasibility; 期刊论文 emphasizes problem awareness, contribution, argument density, and journal-fit caveats.
 
-11. **De-AI Chinese Academic Rewriting**
+12. **De-AI Chinese Academic Rewriting**
    - Remove formulaic expressions such as "随着时代的发展", "具有重要意义", "综上所述可以看出".
    - Replace vague claims with concrete source-backed statements.
    - Vary sentence length and paragraph rhythm while preserving facts and citations.
    - See `references/de_ai_chinese_academic_writing.md`.
 
-12. **Journal Recommendation**
+13. **Journal Recommendation**
    - Recommend Chinese journals only from traceable public or user-supplied information.
    - Output journal name, website/submission link, scope, match reason, and verification caveats.
    - Mark PKU core, CSSCI, CSCD, impact factor, fee, review cycle, and acceptance rate as requiring user verification unless the user provides authoritative current evidence.
    - See `references/journal_finder.md`.
 
-13. **Generate Final Full Textual Literature Review**
+14. **Generate Final Full Textual Literature Review**
    - Always include this section as the last substantive output of a full workflow. Do not replace, remove, merge, or reorder earlier modules such as matrix, relationship analysis, knowledge map, gap analysis, innovation points, de-AI paragraph, journal matching, confirmation questions, or next-step suggestions; only append this final section.
    - Title it "完整版文字式文献综述" for user-confirmed/verified literature, or "待核验版完整版文字式文献综述" when any literature comes from public-source candidates or incomplete metadata.
    - Use the sentence pattern the user requested, such as: `XXX学者在《xxxxx》一文中提出/指出/认为/发现……`.
@@ -121,7 +132,7 @@ Use this skill to help users build Chinese academic papers from traceable litera
    - End with a short synthesis that explains the common contribution, unresolved issue, and how the user's possible research can enter the discussion. Avoid unsupported claims such as "无人研究" or "首次提出".
    - Use `assets/full_textual_literature_review_template.md`.
 
-14. **Final Check**
+15. **Final Check**
    - Validate citations with `scripts/validate_citations.py` when a matrix and draft text are available.
    - Confirm no unverified source entered formal paragraphs.
    - Confirm no fabricated findings, data, or journal claims.
@@ -131,6 +142,13 @@ Use this skill to help users build Chinese academic papers from traceable litera
    - Use `assets/final_checklist.md`.
 
 ## Output Order
+
+One-click review mode output order:
+
+1. 综述状态说明（已核验版/待核验版；文献数量是否达到 8 篇建议线）
+2. 完整版文字式文献综述
+3. 文献覆盖简表（每篇文献是否已写入、正文位置、核验状态）
+4. 必要核验提醒
 
 Default response order for literature tasks:
 
