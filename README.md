@@ -44,6 +44,7 @@
 第一次使用建议先看：
 
 - [3 分钟上手](./docs/quick-start.md)
+- [没有文献时怎么用](./docs/no-literature-workflow.md)
 - [新手使用文档](./docs/getting-started.md)
 - [复制即用提示词模板](./docs/copy-paste-prompts.md)
 - [常见问题 FAQ](./docs/faq.md)

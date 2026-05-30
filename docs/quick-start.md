@@ -137,6 +137,7 @@
 ## 还可以继续看
 
 - [新手使用文档](./getting-started.md)
+- [没有文献时怎么用](./no-literature-workflow.md)
 - [复制即用提示词模板](./copy-paste-prompts.md)
 - [常见问题 FAQ](./faq.md)
 - [示例输入与输出](../examples/README.md)
