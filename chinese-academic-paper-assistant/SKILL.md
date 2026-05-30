@@ -22,6 +22,8 @@ Use this skill to help users build Chinese academic papers from traceable litera
 - When the user first uploads a literature corpus, or when public-source candidate literature is found for a user with no corpus, first produce an author-year-one-sentence-claim table, group papers by shared assumptions, mark clear contradictions/tensions, and create a macro background map before writing review paragraphs. Public-source candidate items must remain clearly labeled as pending verification.
 - When generating innovation points, include the closest 1-3 papers for each point and a suitable methodology suggestion. Closest papers must come from user-supplied, verified, or clearly labeled public-source candidate literature.
 - Never invent citations, journal names, publication dates, findings, data, experiments, core-journal status, impact factors, review cycles, fees, or acceptance probabilities.
+- If author, title, journal/source, year/date, DOI, URL, abstract, or citation metadata is missing or uncertain, mark the item as pending verification instead of completing the field from imagination.
+- Do not use phrases such as "无人研究", "首次提出", "绝对创新", or "填补空白" as factual claims. Use cautious wording such as "在当前文献范围内较少发现", "仍需进一步核验", or "可作为潜在切入点".
 - Only state "X cited/referenced Y" when citation metadata proves it. Without citation data, write "从发表时间和研究内容看，可能存在承接关系，需进一步核验".
 - De-AI rewriting improves naturalness, specificity, rhythm, and readability. Do not promise to bypass AI detectors or misrepresent authorship.
 
@@ -112,6 +114,8 @@ Use this skill to help users build Chinese academic papers from traceable litera
    - Validate citations with `scripts/validate_citations.py` when a matrix and draft text are available.
    - Confirm no unverified source entered formal paragraphs.
    - Confirm no fabricated findings, data, or journal claims.
+   - Confirm all public-source candidate records are still marked "待核验" unless the user explicitly supplied verification details.
+   - Confirm every innovation point has closest-paper, methodology, data/material, suitability, and risk fields when the user asks for innovation analysis.
    - Use `assets/final_checklist.md`.
 
 ## Output Order
