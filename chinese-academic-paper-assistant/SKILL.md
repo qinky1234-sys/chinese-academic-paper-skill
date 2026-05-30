@@ -7,7 +7,7 @@ description: Chinese academic paper assistant for verifiable Chinese literature 
 
 ## Overview
 
-Use this skill to help users build Chinese academic papers from traceable literature. The default workflow is: collect/import literature, supplement only when needed, create a first-upload claim map when the user provides a new corpus, build a literature matrix, analyze relationships, optionally build a research-field knowledge map, identify research gaps, propose innovation points, then write de-AI Chinese literature-review paragraphs and recommend journals with verification caveats.
+Use this skill to help users build Chinese academic papers from traceable literature. The default workflow is: collect/import literature, supplement only when needed, create a first-upload claim map when the user provides a new corpus, build a literature matrix, analyze relationships, optionally build a research-field knowledge map, identify research gaps, propose innovation points with closest-paper and methodology notes, then write de-AI Chinese literature-review paragraphs and recommend journals with verification caveats.
 
 ## Hard Rules
 
@@ -20,6 +20,7 @@ Use this skill to help users build Chinese academic papers from traceable litera
 - Do not scrape CNKI, Wanfang, VIP, or school-library pages behind login, captcha, subscription, or paywall barriers. Process only materials the user lawfully provides or data returned by authorized interfaces.
 - A source may enter formal review paragraphs only when it has at least: author(s), title, journal/source name, publication date/year, and source/identifier. Otherwise keep it in "待核验候选文献".
 - When the user first uploads a literature corpus, or when public-source candidate literature is found for a user with no corpus, first produce an author-year-one-sentence-claim table, group papers by shared assumptions, mark clear contradictions/tensions, and create a macro background map before writing review paragraphs. Public-source candidate items must remain clearly labeled as pending verification.
+- When generating innovation points, include the closest 1-3 papers for each point and a suitable methodology suggestion. Closest papers must come from user-supplied, verified, or clearly labeled public-source candidate literature.
 - Never invent citations, journal names, publication dates, findings, data, experiments, core-journal status, impact factors, review cycles, fees, or acceptance probabilities.
 - Only state "X cited/referenced Y" when citation metadata proves it. Without citation data, write "从发表时间和研究内容看，可能存在承接关系，需进一步核验".
 - De-AI rewriting improves naturalness, specificity, rhythm, and readability. Do not promise to bypass AI detectors or misrepresent authorship.
@@ -82,9 +83,12 @@ Use this skill to help users build Chinese academic papers from traceable litera
 9. **Find Research Gaps and Innovation Points**
    - Identify object, method, scenario, data, theory, time-period, mechanism, and application gaps.
    - Generate 3-5 feasible innovation points.
-   - Each point must explain: existing basis, unresolved issue, possible user approach, required data/materials, and paper section.
+   - Each point must explain: existing basis, unresolved issue, closest 1-3 papers, similarity to those papers, possible differentiation or extension, suggested methodology, required data/materials, suitable paper type, and paper section.
+   - Suggested methodology may include case study, interview, survey, text analysis, policy text analysis, comparative study, empirical model, mixed methods, or literature-based theoretical synthesis.
+   - Mark closest papers from public-source candidate records as "待核验"; do not treat them as confirmed evidence.
+   - Do not claim automatic similarity scoring, novelty scoring, methodology-fit scoring, or visual innovation graphs in the open-source workflow.
    - Use cautious language: "在当前已检索文献范围内较少发现" rather than "没有人做过".
-   - See `references/research_gap_and_innovation.md`.
+   - See `references/research_gap_and_innovation.md` and `assets/innovation_closest_papers_template.md`.
 
 10. **Write Review Paragraphs**
    - Write Chinese introduction/literature-review paragraphs only after the matrix and gap analysis.
@@ -124,7 +128,7 @@ Default response order for literature tasks:
 8. 研究脉络与逻辑关系
 9. 研究领域知识地图（用户需要时输出核心主张、支持柱、争议区、前沿问题和初学者必读论文）
 10. 研究空白
-11. 可选创新点
+11. 可选创新点（每个创新点附 1-3 篇最接近论文、相近之处、可推进空间和推荐方法论）
 12. 去 AI 化后的中文综述段落；若来源尚未由用户确认，标题必须标注为“待核验版”
 13. 待用户确认的问题
 14. 下一步建议
@@ -139,6 +143,7 @@ Default response order for literature tasks:
 - `references/chinese_database_access.md`: CNKI/Wanfang/VIP/library/journal access boundaries.
 - `references/literature_relationship_analysis.md`: commonality, timeline, and relationship analysis.
 - `references/research_gap_and_innovation.md`: gap and innovation-point discovery.
+- `assets/innovation_closest_papers_template.md`: closest-paper and methodology template for innovation points.
 - `references/citation_rules.md`: citation integrity and validation.
 - `references/de_ai_chinese_academic_writing.md`: natural Chinese academic style.
 - `references/journal_finder.md`: Chinese journal matching.
