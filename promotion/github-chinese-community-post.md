@@ -2,7 +2,7 @@
 
 ## 推荐标题
 
-我做了一个中文论文文献综述 Codex Skill：支持 CNKI/万方/维普/Zotero/BibTeX/RIS
+我做了一个中文论文文献综述 Codex Skill：没有文献也能先生成检索策略和待核验综述
 
 ## 正文
 
@@ -20,6 +20,7 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill
 - 综述段落容易变成模板话，缺少具体文献脉络。
 - 创新点很空，不知道自己还能从哪个角度写。
 - 中文数据库里的题录、Zotero、BibTeX、RIS 资料不知道怎么接入 AI 工作流。
+- 手里还没有文献时，不知道第一步该去哪里查、怎么查、查完怎么整理。
 
 这个项目的思路是：先整理真实文献，再让 AI 写综述。
 
@@ -27,9 +28,12 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill
 
 - 支持用户导入 CNKI、万方、维普、学校图书馆、期刊官网、Zotero、BibTeX、RIS、PDF 摘要等文献资料。
 - 用户没有文献时，也可以根据论文主题从公开来源查找候选文献，并生成待核验版文献矩阵和初步综述。
+- 首次上传文献或从公开来源找到候选文献后，生成“作者+年份+一句话核心主张”表。
+- 按共同假设分组，标记互相矛盾或存在张力的论文，并绘制宏观背景图。
 - 生成文献矩阵：作者、年份、题名、期刊、摘要、关键词、方法、结论、局限。
 - 分析文献共同点、研究脉络和可能承接关系。
-- 总结研究空白和 3-5 个可选创新点。
+- 创建研究领域知识地图：核心主张、支持柱、争议区、前沿问题和初学者必读论文。
+- 总结研究空白和 3-5 个可选创新点，并为每个创新点标记最接近论文和推荐方法论。
 - 支持本科论文、硕士论文、期刊论文三种输出模式。
 - 生成更自然的中文文献综述段落，减少模板化表达。
 
@@ -54,7 +58,7 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill
 
 仓库里已经放了完整中文演示案例：
 
-https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/05-full-chinese-demo-case.md
+https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/08-full-chinese-workflow-demo.md
 
 以及三种输出模式示例：
 
