@@ -7,7 +7,7 @@ description: Chinese academic paper assistant for verifiable Chinese literature 
 
 ## Overview
 
-Use this skill to help users build Chinese academic papers from traceable literature. The default workflow is: collect/import literature, supplement only when needed, build a literature matrix, analyze relationships and research gaps, propose innovation points, then write de-AI Chinese literature-review paragraphs and recommend journals with verification caveats.
+Use this skill to help users build Chinese academic papers from traceable literature. The default workflow is: collect/import literature, supplement only when needed, build a literature matrix, analyze relationships, optionally build a research-field knowledge map, identify research gaps, propose innovation points, then write de-AI Chinese literature-review paragraphs and recommend journals with verification caveats.
 
 ## Hard Rules
 
@@ -61,36 +61,43 @@ Use this skill to help users build Chinese academic papers from traceable litera
    - Analyze inheritance, extension, contrast, correction, method transfer, or scenario transfer.
    - Use `references/literature_relationship_analysis.md` and `scripts/build_literature_timeline.py`.
 
-7. **Find Research Gaps and Innovation Points**
+7. **Build a Research-Field Knowledge Map**
+   - When the user asks for a 研究领域知识地图, 知识图谱, 核心主张, 支持柱, 争议区, 前沿问题, or 初学者必读论文, output a clean table-based knowledge map.
+   - Include: one core claim, 3-5 support pillars, 2-3 controversy zones, 1-2 frontier questions, and beginner must-read papers with reasons.
+   - Base the map only on verified/user-supplied literature or clearly labeled public-source candidates.
+   - If sources are not fully verified, title the section "待核验版研究领域知识地图".
+   - Use `assets/knowledge_map_template.md`.
+
+8. **Find Research Gaps and Innovation Points**
    - Identify object, method, scenario, data, theory, time-period, mechanism, and application gaps.
    - Generate 3-5 feasible innovation points.
    - Each point must explain: existing basis, unresolved issue, possible user approach, required data/materials, and paper section.
    - Use cautious language: "在当前已检索文献范围内较少发现" rather than "没有人做过".
    - See `references/research_gap_and_innovation.md`.
 
-8. **Write Review Paragraphs**
+9. **Write Review Paragraphs**
    - Write Chinese introduction/literature-review paragraphs only after the matrix and gap analysis.
    - Use citation markers such as `张三等（2023）`, `（张三，2023）`, or the user's requested style.
    - Do not copy source text verbatim; synthesize and paraphrase from verified metadata/abstracts/user-provided excerpts.
    - Match the paper mode: 本科论文 emphasizes clarity and basic classification; 硕士论文 emphasizes research lineage, gaps, and method feasibility; 期刊论文 emphasizes problem awareness, contribution, argument density, and journal-fit caveats.
 
-9. **De-AI Chinese Academic Rewriting**
+10. **De-AI Chinese Academic Rewriting**
    - Remove formulaic expressions such as "随着时代的发展", "具有重要意义", "综上所述可以看出".
    - Replace vague claims with concrete source-backed statements.
    - Vary sentence length and paragraph rhythm while preserving facts and citations.
    - See `references/de_ai_chinese_academic_writing.md`.
 
-10. **Journal Recommendation**
-    - Recommend Chinese journals only from traceable public or user-supplied information.
-    - Output journal name, website/submission link, scope, match reason, and verification caveats.
-    - Mark PKU core, CSSCI, CSCD, impact factor, fee, review cycle, and acceptance rate as requiring user verification unless the user provides authoritative current evidence.
-    - See `references/journal_finder.md`.
+11. **Journal Recommendation**
+   - Recommend Chinese journals only from traceable public or user-supplied information.
+   - Output journal name, website/submission link, scope, match reason, and verification caveats.
+   - Mark PKU core, CSSCI, CSCD, impact factor, fee, review cycle, and acceptance rate as requiring user verification unless the user provides authoritative current evidence.
+   - See `references/journal_finder.md`.
 
-11. **Final Check**
-    - Validate citations with `scripts/validate_citations.py` when a matrix and draft text are available.
-    - Confirm no unverified source entered formal paragraphs.
-    - Confirm no fabricated findings, data, or journal claims.
-    - Use `assets/final_checklist.md`.
+12. **Final Check**
+   - Validate citations with `scripts/validate_citations.py` when a matrix and draft text are available.
+   - Confirm no unverified source entered formal paragraphs.
+   - Confirm no fabricated findings, data, or journal claims.
+   - Use `assets/final_checklist.md`.
 
 ## Output Order
 
@@ -100,11 +107,12 @@ Default response order for literature tasks:
 2. 文献矩阵
 3. 文献共同点
 4. 研究脉络与逻辑关系
-5. 研究空白
-6. 可选创新点
-7. 去 AI 化后的中文综述段落；若来源尚未由用户确认，标题必须标注为“待核验版”
-8. 待用户确认的问题
-9. 下一步建议
+5. 研究领域知识地图（用户需要时输出核心主张、支持柱、争议区、前沿问题和初学者必读论文）
+6. 研究空白
+7. 可选创新点
+8. 去 AI 化后的中文综述段落；若来源尚未由用户确认，标题必须标注为“待核验版”
+9. 待用户确认的问题
+10. 下一步建议
 
 ## Resources
 
