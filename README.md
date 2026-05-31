@@ -6,6 +6,15 @@
 
 一句话理解：**上传文献或让 skill 先查找候选文献，就能一键生成完整文献综述；公开来源候选文献会标为“待核验”，核验后再进入正式论文内容。**
 
+## 快速入口
+
+- [3 分钟上手](./docs/quick-start.md)
+- [一键综述示例](./examples/10-one-click-literature-review.md)
+- [复制即用提示词](./docs/copy-paste-prompts.md)
+- [更新日志](./CHANGELOG.md)
+- [贡献指南](./CONTRIBUTING.md)
+- [MIT License](./LICENSE)
+
 ## 它解决什么问题
 
 很多人在用 AI 写文献综述时会遇到三个问题：
@@ -220,13 +229,17 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill/tree/main/chinese-
 
 ```text
 chinese-academic-paper-skill/
+├─ .github/ISSUE_TEMPLATE/             # 使用问题、导入格式、功能建议模板
 ├─ chinese-academic-paper-assistant/   # Codex skill 主体
 │  ├─ SKILL.md
 │  ├─ references/                      # 工作流、数据库边界、写作规则
 │  ├─ scripts/                         # BibTeX/RIS 解析、矩阵校验等脚本
 │  └─ assets/                          # 文献矩阵和输出模板
 ├─ docs/                               # 新手文档和提示词模板
-└─ examples/                           # 示例输入与输出
+├─ examples/                           # 示例输入与输出
+├─ CHANGELOG.md                        # 版本更新记录
+├─ CONTRIBUTING.md                     # 贡献指南
+└─ LICENSE                             # MIT License
 ```
 
 ## 版本路线
@@ -263,3 +276,9 @@ chinese-academic-paper-skill/
 
 - [GitHub 中文社区推广帖](./promotion/github-chinese-community-post.md)
 - [推广执行清单](./promotion/promotion-checklist.md)
+
+## 参与贡献
+
+欢迎提交中文数据库导出格式、Zotero/BibTeX/RIS 示例、提示词模板、文档修正和脚本改进。提交前请阅读 [贡献指南](./CONTRIBUTING.md)。如果你只是想反馈问题，可以直接使用 GitHub Issues 中的模板。
+
+本项目使用 [MIT License](./LICENSE)。
