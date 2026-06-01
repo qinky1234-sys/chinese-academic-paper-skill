@@ -268,6 +268,46 @@
       font-size: 14px;
     }
 
+    .guide {
+      margin: 12px 0;
+      border: 1px solid #dbe4f0;
+      border-radius: 6px;
+      background: #fbfcff;
+    }
+
+    .guide summary {
+      padding: 12px 14px;
+      color: #263349;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .guide-body {
+      padding: 0 14px 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .guide-body ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    .file-row {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 12px;
+      border: 1px dashed #b8c4d6;
+      border-radius: 6px;
+      background: #f8fbff;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      font: inherit;
+    }
+
     .result-head {
       display: flex;
       flex-wrap: wrap;
@@ -497,7 +537,24 @@
 
             <div class="field" id="literatureField">
               <label for="literature">文献资料</label>
+              <details class="guide" open>
+                <summary>不知道怎么填？点这里看使用说明</summary>
+                <div class="guide-body">
+                  <ul>
+                    <li><strong>最简单：</strong>从 CNKI、万方、维普或学校图书馆复制论文题录、摘要、关键词，直接粘贴到下面。</li>
+                    <li><strong>Zotero：</strong>它是文献管理软件。你可以选中文献后导出 BibTeX 或 RIS，再把文件上传到这里。</li>
+                    <li><strong>BibTeX / RIS：</strong>它们是常见文献导出格式，通常后缀是 `.bib` 或 `.ris`，网页会尝试把文本内容读进来。</li>
+                    <li><strong>PDF：</strong>可以选择 PDF 文件，但本免费静态网页不会上传或解析 PDF 正文。复制提示词到 AI 工具后，请把 PDF 文件也一起上传给那个 AI。</li>
+                    <li><strong>手动整理也可以：</strong>每篇文献尽量写清作者、年份、题名、期刊或来源、摘要、关键词、DOI 或 URL。</li>
+                  </ul>
+                </div>
+              </details>
               <textarea id="literature" placeholder="请粘贴 CNKI、万方、维普、学校图书馆、Zotero、BibTeX、RIS、PDF 摘要或手动整理的文献信息。建议包含：作者、年份、题名、期刊或来源、摘要、关键词、DOI 或 URL。"></textarea>
+              <div class="file-row">
+                <label for="literatureFiles">上传文献文件（可选）</label>
+                <input id="literatureFiles" type="file" multiple accept=".txt,.md,.ris,.bib,.pdf,.doc,.docx,application/pdf">
+                <div class="help">支持读取 `.txt`、`.md`、`.ris`、`.bib` 文本内容；PDF、Word 文件会加入文件名和操作提醒，复制提示词后请在 AI 工具里同步上传原文件。</div>
+              </div>
               <div class="help">如果你还没有文献，可以选择“我还没有文献”，这里可以留空。</div>
             </div>
 
@@ -653,6 +710,8 @@
     const resetBtn = document.getElementById("resetBtn");
     const regenerateBtn = document.getElementById("regenerateBtn");
     const toast = document.getElementById("toast");
+    const literatureInput = document.getElementById("literature");
+    const literatureFiles = document.getElementById("literatureFiles");
 
     function getStatus() {
       return document.querySelector("input[name='literatureStatus']:checked").value;
@@ -770,7 +829,7 @@ ${info.needs.map((item, index) => `${index + 1}. ${item}`).join("\n")}
 
     function buildPrompt() {
       const info = baseInfo();
-      const literature = document.getElementById("literature").value.trim();
+      const literature = literatureInput.value.trim();
       const status = getStatus();
       if (status === "enough") return buildEnoughTemplate(info, literature);
       if (status === "partial") return buildPartialTemplate(info, literature);
@@ -801,6 +860,53 @@ ${info.needs.map((item, index) => `${index + 1}. ${item}`).join("\n")}
       result.textContent = "填写左侧信息后，点击“生成提示词”。这里会出现一整段可以直接复制到 AI 工具里的提示词。";
     });
 
+    function appendLiterature(text) {
+      const current = literatureInput.value.trim();
+      literatureInput.value = current ? `${current}\n\n${text}` : text;
+    }
+
+    function readTextFile(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result || ""));
+        reader.onerror = () => reject(reader.error);
+        reader.readAsText(file, "utf-8");
+      });
+    }
+
+    literatureFiles.addEventListener("change", async () => {
+      const files = Array.from(literatureFiles.files || []);
+      if (!files.length) return;
+
+      const textExts = [".txt", ".md", ".ris", ".bib"];
+      const chunks = [];
+      const fileNotes = [];
+
+      for (const file of files) {
+        const name = file.name;
+        const lowerName = name.toLowerCase();
+        const isText = textExts.some((ext) => lowerName.endsWith(ext));
+
+        if (isText) {
+          try {
+            const text = await readTextFile(file);
+            chunks.push(`【上传文件：${name}】\n${text.trim() || "文件内容为空，请人工检查。"}`);
+          } catch (error) {
+            fileNotes.push(`【文件读取失败：${name}】请手动打开文件后复制文献信息。`);
+          }
+        } else if (lowerName.endsWith(".pdf")) {
+          fileNotes.push(`【已选择 PDF：${name}】本网页不会上传或解析 PDF。复制提示词到 AI 工具后，请把这个 PDF 文件一起上传，并要求 AI 读取题名、作者、摘要、关键词和参考文献。`);
+        } else if (lowerName.endsWith(".doc") || lowerName.endsWith(".docx")) {
+          fileNotes.push(`【已选择 Word 文件：${name}】本网页不会上传或解析 Word。复制提示词到 AI 工具后，请把这个文件一起上传，或先复制其中的题录和摘要到文献资料框。`);
+        } else {
+          fileNotes.push(`【已选择文件：${name}】当前网页无法读取这种格式，请复制其中的题录、摘要或关键词到文献资料框。`);
+        }
+      }
+
+      appendLiterature([...chunks, ...fileNotes].join("\n\n"));
+      showToast("文件信息已加入文献资料框");
+    });
+
     copyBtn.addEventListener("click", async () => {
       const text = result.textContent.trim();
       if (!text || text.includes("这里会出现一整段可以直接复制到 AI 工具里的提示词。")) {
@@ -827,7 +933,7 @@ ${info.needs.map((item, index) => `${index + 1}. ${item}`).join("\n")}
         document.getElementById("paperType").value = "本科论文";
         document.getElementById("discipline").value = type === "enough" ? "教育学" : "管理学";
         document.querySelector(`input[name='literatureStatus'][value='${type === "enough" ? "enough" : "none"}']`).checked = true;
-        document.getElementById("literature").value = type === "enough"
+        literatureInput.value = type === "enough"
           ? "1. 秦浩轩、李霞、曾美红等，2019，《大学生短视频成瘾量表的初步编制》，中国心理学前沿，关注短视频成瘾测量。\n2. 王小凤、李思婷、索秀娟等，2022，《大学生短视频使用特点及对主观幸福感的影响研究》，社会科学前沿，关注使用特点与主观幸福感。\n3. Ye 等，2022，Effects of Short Video Addiction on the Motivation and Well-Being of Chinese Vocational College Students，Frontiers in Public Health，关注短视频成瘾与学习动机。\n4. Zhang 等，2023，A cross-national study on the excessive use of short-video applications among college students，Computers in Human Behavior，关注大学生短视频过度使用。\n5. Ye 等，2023，Predicting the Learning Avoidance Motivation, Learning Commitment, and Silent Classroom Behavior，Healthcare，关注短视频成瘾与课堂行为。\n6. Xie 等，2023，The effect of short-form video addiction on undergraduates' academic procrastination，Frontiers in Psychology，关注短视频成瘾与学业拖延。\n7. Li、Geng、Wu，2024，Effects of short-form video app addiction on academic anxiety and academic engagement，Frontiers in Psychology，关注学业焦虑与学习投入。\n8. 王兴超、田芳芳，2025，《大学生短视频成瘾与学业成绩的关系》，华南师范大学学报（社会科学版），关注学习投入与学业自我效能感。"
           : "";
         renderPrompt();
