@@ -9,6 +9,7 @@
 ## 推荐分享链接
 
 - 仓库首页：<https://github.com/qinky1234-sys/chinese-academic-paper-skill>
+- 不安装也能先用：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/PROMPT_VERSION.md>
 - 一键综述示例：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/10-one-click-literature-review.md>
 - 3 分钟上手：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/docs/quick-start.md>
 - 复制即用提示词：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/docs/copy-paste-prompts.md>
@@ -31,6 +32,9 @@ chinese-academic-paper-assistant
 它不会编造参考文献，也不会绕过 CNKI、万方、维普、学校图书馆的登录或付费权限。公开来源找到的文献会标注为“待核验”，核验后再进入正式论文内容。
 
 适合写本科论文、硕士论文、开题报告、期刊论文引言或文献综述的人。
+
+不会安装也能先试：
+https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/PROMPT_VERSION.md
 
 仓库：
 https://github.com/qinky1234-sys/chinese-academic-paper-skill
