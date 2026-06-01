@@ -323,6 +323,40 @@
       color: var(--muted);
     }
 
+    .example-block {
+      margin: 12px 0;
+      padding: 12px;
+      border: 1px solid #dbe4f0;
+      border-radius: 6px;
+      background: #fbfcff;
+    }
+
+    .example-block strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #263349;
+    }
+
+    .example-block ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .prompt-preview {
+      max-height: 180px;
+      overflow: auto;
+      margin: 12px 0 14px;
+      padding: 12px;
+      border: 1px solid #cbd3df;
+      border-radius: 6px;
+      background: #f8fafc;
+      color: #263349;
+      white-space: pre-wrap;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
     .boundary {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -508,15 +542,64 @@
 
     <section id="examples">
       <h2 class="section-title">示例</h2>
+      <p class="section-note">这里不是最终生成的论文，而是用户点按钮后会自动填入表单并生成的提示词效果。你可以先看示例输入和提示词片段，再决定是否填入。</p>
       <div class="examples">
         <article class="example-card">
           <h3>示例 A：已有 8 篇文献</h3>
           <p>适合已经从数据库或文献管理工具里整理好题录、摘要和关键词的用户。</p>
+          <div class="example-block">
+            <strong>示例输入</strong>
+            <ul>
+              <li>题目：大学生短视频使用对学习专注度的影响</li>
+              <li>状态：已有 8 篇以上文献</li>
+              <li>资料：粘贴作者、年份、题名、期刊、摘要或核心观点</li>
+            </ul>
+          </div>
+          <div class="example-block">
+            <strong>会生成什么</strong>
+            <ul>
+              <li>要求 AI 先整理文献覆盖表。</li>
+              <li>要求完整综述覆盖每一篇可用文献。</li>
+              <li>要求使用“XXX学者在《xxxxx》一文中指出……”的写法。</li>
+            </ul>
+          </div>
+          <div class="prompt-preview">请扮演中文论文文献综述助手。
+
+我的论文题目是：大学生短视频使用对学习专注度的影响
+论文类型是：本科论文
+
+请识别我提供的 8 篇以上文献资料，整理成文献覆盖简表；对所有字段足够的文献，生成一篇完整中文文献综述；综述正文必须覆盖我提供的每一篇可用文献，并使用“XXX学者在《xxxxx》一文中提出/指出/认为……”的写法。
+
+不要编造作者、题名、期刊、年份、DOI 或研究结论。</div>
           <button class="btn" type="button" data-example="enough">填入示例</button>
         </article>
         <article class="example-card">
           <h3>示例 B：没有文献</h3>
           <p>适合只有论文题目，希望先找 8 篇候选文献并生成待核验综述的用户。</p>
+          <div class="example-block">
+            <strong>示例输入</strong>
+            <ul>
+              <li>题目：乡村振兴背景下基层数字治理</li>
+              <li>状态：还没有文献</li>
+              <li>资料：无需先粘贴文献</li>
+            </ul>
+          </div>
+          <div class="example-block">
+            <strong>会生成什么</strong>
+            <ul>
+              <li>拆解关键词、同义词和扩展词。</li>
+              <li>生成 CNKI、万方、维普、学校图书馆等检索式。</li>
+              <li>规划 8 篇候选文献，并要求全部标注“待核验”。</li>
+            </ul>
+          </div>
+          <div class="prompt-preview">请扮演中文论文文献综述助手。
+
+我的论文题目是：乡村振兴背景下基层数字治理
+我现在还没有整理好的文献。
+
+请先拆解核心关键词，给出 CNKI、万方、维普、学校图书馆、期刊官网、百度学术、Google Scholar 等入口使用的检索式；如果能基于公开来源找到候选文献，请整理为候选文献表，并全部标注为“待核验”。
+
+不要把待核验候选文献写成正式已核验引用。</div>
           <button class="btn" type="button" data-example="none">填入示例</button>
         </article>
       </div>
@@ -744,7 +827,7 @@ ${info.needs.map((item, index) => `${index + 1}. ${item}`).join("\n")}
         document.getElementById("discipline").value = type === "enough" ? "教育学" : "管理学";
         document.querySelector(`input[name='literatureStatus'][value='${type === "enough" ? "enough" : "none"}']`).checked = true;
         document.getElementById("literature").value = type === "enough"
-          ? "1. 作者，年份，《题名》，期刊，摘要或核心观点。\n2. 作者，年份，《题名》，期刊，摘要或核心观点。\n请继续粘贴到 8 篇以上。"
+          ? "1. 秦浩轩、李霞、曾美红等，2019，《大学生短视频成瘾量表的初步编制》，中国心理学前沿，关注短视频成瘾测量。\n2. 王小凤、李思婷、索秀娟等，2022，《大学生短视频使用特点及对主观幸福感的影响研究》，社会科学前沿，关注使用特点与主观幸福感。\n3. Ye 等，2022，Effects of Short Video Addiction on the Motivation and Well-Being of Chinese Vocational College Students，Frontiers in Public Health，关注短视频成瘾与学习动机。\n4. Zhang 等，2023，A cross-national study on the excessive use of short-video applications among college students，Computers in Human Behavior，关注大学生短视频过度使用。\n5. Ye 等，2023，Predicting the Learning Avoidance Motivation, Learning Commitment, and Silent Classroom Behavior，Healthcare，关注短视频成瘾与课堂行为。\n6. Xie 等，2023，The effect of short-form video addiction on undergraduates' academic procrastination，Frontiers in Psychology，关注短视频成瘾与学业拖延。\n7. Li、Geng、Wu，2024，Effects of short-form video app addiction on academic anxiety and academic engagement，Frontiers in Psychology，关注学业焦虑与学习投入。\n8. 王兴超、田芳芳，2025，《大学生短视频成瘾与学业成绩的关系》，华南师范大学学报（社会科学版），关注学习投入与学业自我效能感。"
           : "";
         renderPrompt();
         document.getElementById("generator").scrollIntoView({ behavior: "smooth", block: "start" });
