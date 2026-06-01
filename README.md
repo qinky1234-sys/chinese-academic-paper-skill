@@ -199,6 +199,7 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill/tree/main/chinese-
 | v0.1.9 完整中文工作流演示 | [查看示例](./examples/08-full-chinese-workflow-demo.md) |
 | v0.1.10 最后追加完整版文字式文献综述 | [查看示例](./examples/09-full-textual-literature-review.md) |
 | v0.1.11 一键生成完整文献综述 | [查看示例](./examples/10-one-click-literature-review.md) |
+| 真实案例：没有文献 → 8 篇候选 → 待核验综述 | [查看示例](./examples/11-real-no-literature-to-candidates-review.md) |
 
 示例提示词：
 
@@ -283,6 +284,7 @@ chinese-academic-paper-skill/
 - v0.1.9：完整中文工作流演示、适用/不适用场景、最小可用提示词和防编造文献规则强化。
 - v0.1.10：完整版文字式文献综述，在完整流程最后逐篇覆盖所有已找到并进入矩阵或候选表的文献。
 - v0.1.11：开源版一键综述模式，上传 8 篇以上文献或由 skill 查找候选文献后，直接输出完整文献综述和文献覆盖简表。
+- Unreleased：新增不安装也能先用的提示词版入口，以及“没有文献 → 8 篇真实公开候选 → 待核验综述”的完整案例。
 - v0.2：授权万方接口接入、付费额度、中文元数据核验增强、批量文献分析。
 - v0.3+：更完善的 CNKI/VIP/学校图书馆导入流程、更多导出格式、期刊官网公开元数据处理。
 
