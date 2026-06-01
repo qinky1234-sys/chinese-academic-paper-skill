@@ -508,13 +508,60 @@
             <div class="field">
               <label for="discipline">学科领域</label>
               <select id="discipline">
-                <option>教育学</option>
-                <option>管理学</option>
-                <option>法学</option>
-                <option>新闻传播</option>
+                <option>请选择或输入学科</option>
+                <option>马克思主义理论</option>
+                <option>哲学</option>
                 <option>经济学</option>
-                <option>其他</option>
+                <option>金融学</option>
+                <option>国际贸易</option>
+                <option>法学</option>
+                <option>社会学</option>
+                <option>政治学</option>
+                <option>教育学</option>
+                <option>心理学</option>
+                <option>体育学</option>
+                <option>中国语言文学</option>
+                <option>外国语言文学</option>
+                <option>新闻传播</option>
+                <option>历史学</option>
+                <option>管理学</option>
+                <option>工商管理</option>
+                <option>公共管理</option>
+                <option>会计学</option>
+                <option>旅游管理</option>
+                <option>图书情报与档案管理</option>
+                <option>艺术学</option>
+                <option>设计学</option>
+                <option>数学</option>
+                <option>物理学</option>
+                <option>化学</option>
+                <option>生物学</option>
+                <option>地理学</option>
+                <option>统计学</option>
+                <option>计算机科学与技术</option>
+                <option>软件工程</option>
+                <option>人工智能</option>
+                <option>电子信息</option>
+                <option>通信工程</option>
+                <option>机械工程</option>
+                <option>电气工程</option>
+                <option>土木工程</option>
+                <option>建筑学</option>
+                <option>交通运输</option>
+                <option>环境科学与工程</option>
+                <option>材料科学与工程</option>
+                <option>化学工程</option>
+                <option>农业科学</option>
+                <option>医学</option>
+                <option>护理学</option>
+                <option>药学</option>
+                <option>中医学</option>
+                <option>公共卫生</option>
+                <option>交叉学科</option>
+                <option>其他/自定义</option>
               </select>
+              <input id="customDiscipline" type="text" placeholder="如果上面没有你的专业，请在这里输入，例如：审计学、数字媒体艺术、城乡规划等" style="margin-top:10px;">
+              <div class="help">下拉框只是为了快速选择；如果你的专业不在里面，直接填写自定义学科即可。</div>
             </div>
 
             <fieldset class="field">
@@ -725,7 +772,9 @@
       const topic = document.getElementById("topic").value.trim() || "【填写你的论文题目】";
       const direction = document.getElementById("direction").value.trim() || "【填写研究方向】";
       const paperType = document.getElementById("paperType").value;
-      const discipline = document.getElementById("discipline").value;
+      const selectedDiscipline = document.getElementById("discipline").value;
+      const customDiscipline = document.getElementById("customDiscipline").value.trim();
+      const discipline = customDiscipline || (selectedDiscipline === "请选择或输入学科" ? "【填写学科领域】" : selectedDiscipline);
       const needs = getNeeds();
       return { topic, direction, paperType, discipline, needs };
     }
@@ -932,6 +981,7 @@ ${info.needs.map((item, index) => `${index + 1}. ${item}`).join("\n")}
           : "数字治理、基层治理、乡村振兴";
         document.getElementById("paperType").value = "本科论文";
         document.getElementById("discipline").value = type === "enough" ? "教育学" : "管理学";
+        document.getElementById("customDiscipline").value = "";
         document.querySelector(`input[name='literatureStatus'][value='${type === "enough" ? "enough" : "none"}']`).checked = true;
         literatureInput.value = type === "enough"
           ? "1. 秦浩轩、李霞、曾美红等，2019，《大学生短视频成瘾量表的初步编制》，中国心理学前沿，关注短视频成瘾测量。\n2. 王小凤、李思婷、索秀娟等，2022，《大学生短视频使用特点及对主观幸福感的影响研究》，社会科学前沿，关注使用特点与主观幸福感。\n3. Ye 等，2022，Effects of Short Video Addiction on the Motivation and Well-Being of Chinese Vocational College Students，Frontiers in Public Health，关注短视频成瘾与学习动机。\n4. Zhang 等，2023，A cross-national study on the excessive use of short-video applications among college students，Computers in Human Behavior，关注大学生短视频过度使用。\n5. Ye 等，2023，Predicting the Learning Avoidance Motivation, Learning Commitment, and Silent Classroom Behavior，Healthcare，关注短视频成瘾与课堂行为。\n6. Xie 等，2023，The effect of short-form video addiction on undergraduates' academic procrastination，Frontiers in Psychology，关注短视频成瘾与学业拖延。\n7. Li、Geng、Wu，2024，Effects of short-form video app addiction on academic anxiety and academic engagement，Frontiers in Psychology，关注学业焦虑与学习投入。\n8. 王兴超、田芳芳，2025，《大学生短视频成瘾与学业成绩的关系》，华南师范大学学报（社会科学版），关注学习投入与学业自我效能感。"
