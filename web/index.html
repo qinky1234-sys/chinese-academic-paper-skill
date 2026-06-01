@@ -527,14 +527,14 @@
         <div class="panel">
           <div class="panel-body">
             <div class="result-head">
-              <h2 class="section-title" style="margin:0;font-size:22px;">生成结果</h2>
+              <h2 class="section-title" style="margin:0;font-size:22px;">生成结果：这就是提示词</h2>
               <div class="actions" style="margin:0;">
                 <button class="btn primary" type="button" id="copyBtn">复制提示词</button>
                 <button class="btn" type="button" id="regenerateBtn">重新生成</button>
               </div>
             </div>
-            <div class="result-box" id="result" aria-live="polite">填写左侧信息后，点击“生成提示词”。</div>
-            <div class="notice">使用步骤：复制生成的提示词，粘贴到 ChatGPT、DeepSeek、豆包、通义等支持长文本分析的 AI 工具里，再根据提示补充文献或论文题目。</div>
+            <div class="result-box" id="result" aria-live="polite">填写左侧信息后，点击“生成提示词”。这里会出现一整段可以直接复制到 AI 工具里的提示词。</div>
+            <div class="notice">右侧框里的整段文字就是提示词。点击“复制提示词”，再粘贴到 ChatGPT、DeepSeek、豆包、通义等支持长文本分析的 AI 工具里使用。</div>
           </div>
         </div>
       </div>
@@ -778,7 +778,8 @@ ${info.needs.map((item, index) => `${index + 1}. ${item}`).join("\n")}
     }
 
     function renderPrompt() {
-      result.textContent = buildPrompt();
+      result.textContent = "【下面整段就是可复制提示词】\n\n" + buildPrompt();
+      showToast("提示词已生成，可以复制了");
     }
 
     function showToast(message) {
@@ -797,12 +798,12 @@ ${info.needs.map((item, index) => `${index + 1}. ${item}`).join("\n")}
 
     resetBtn.addEventListener("click", () => {
       form.reset();
-      result.textContent = "填写左侧信息后，点击“生成提示词”。";
+      result.textContent = "填写左侧信息后，点击“生成提示词”。这里会出现一整段可以直接复制到 AI 工具里的提示词。";
     });
 
     copyBtn.addEventListener("click", async () => {
       const text = result.textContent.trim();
-      if (!text || text === "填写左侧信息后，点击“生成提示词”。") {
+      if (!text || text.includes("这里会出现一整段可以直接复制到 AI 工具里的提示词。")) {
         showToast("请先生成提示词");
         return;
       }
