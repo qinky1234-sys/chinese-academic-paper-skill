@@ -1,13 +1,14 @@
 # 推广固定入口
 
-这是 `chinese-academic-paper-assistant` 的对外分享入口。推广时优先发这一页，读者可以从这里快速理解项目、查看示例并开始使用。
+这是 `chinese-academic-paper-assistant` 的对外分享入口。推广时优先发免费网页版，读者不需要安装 Codex，也可以先生成可复制的文献综述提示词。
 
 ## 一句话介绍
 
-一个面向中文论文写作的 Codex Skill：上传 8 篇以上文献，或先查找公开候选文献，即可一键生成完整文献综述和文献覆盖简表。
+一个免费的中文论文文献综述提示词生成器：填写论文题目和文献资料，就能生成可复制到 ChatGPT、DeepSeek、豆包、通义等 AI 工具里的高质量文献综述提示词。
 
 ## 推荐分享链接
 
+- 免费网页版：<https://qinky1234-sys.github.io/chinese-academic-paper-skill/>
 - 仓库首页：<https://github.com/qinky1234-sys/chinese-academic-paper-skill>
 - 不安装也能先用：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/PROMPT_VERSION.md>
 - 真实案例：没有文献到 8 篇候选再到待核验综述：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/11-real-no-literature-to-candidates-review.md>
@@ -25,17 +26,21 @@
 ## 复制即用推广文案
 
 ```text
-我做了一个中文论文文献综述方向的 Codex Skill：
-chinese-academic-paper-assistant
+我做了一个免费的中文论文文献综述提示词生成器。
 
-它的核心卖点是：上传 8 篇以上文献，或先让它查找公开候选文献，就能一键生成完整文献综述和文献覆盖简表。
+它的核心卖点是：不需要安装 Codex，不需要会写提示词。你只要填写论文题目、论文类型和文献状态，它就能生成一段可以复制到 ChatGPT、DeepSeek、豆包、通义等 AI 工具里的文献综述提示词。
+
+支持三种情况：
+1. 已有 8 篇以上文献。
+2. 只有几篇文献，不够 8 篇。
+3. 还没有文献，需要先找候选文献。
 
 它不会编造参考文献，也不会绕过 CNKI、万方、维普、学校图书馆的登录或付费权限。公开来源找到的文献会标注为“待核验”，核验后再进入正式论文内容。
 
 适合写本科论文、硕士论文、开题报告、期刊论文引言或文献综述的人。
 
-不会安装也能先试：
-https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/PROMPT_VERSION.md
+免费网页版：
+https://qinky1234-sys.github.io/chinese-academic-paper-skill/
 
 真实案例：
 https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/11-real-no-literature-to-candidates-review.md

@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中文论文文献综述提示词生成器</title>
+  <meta name="description" content="免费生成中文论文文献综述提示词。支持已有文献、文献不足、没有文献三种情况，不需要安装 Codex。">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8fb;
+      --panel: #ffffff;
+      --text: #18202f;
+      --muted: #5d687a;
+      --line: #d8dee9;
+      --brand: #1463ff;
+      --brand-dark: #0b48bf;
+      --ok: #0f8a5f;
+      --warn: #9a5b00;
+      --soft: #eef4ff;
+      --soft-warn: #fff6e6;
+      --shadow: 0 18px 50px rgba(20, 38, 70, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
+      align-items: center;
+      min-height: 520px;
+      padding: 56px 0 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 6px 10px;
+      border: 1px solid #bfd0ff;
+      border-radius: 6px;
+      background: var(--soft);
+      color: var(--brand-dark);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(34px, 4.6vw, 60px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      background: var(--brand-dark);
+    }
+
+    .hero-panel {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel h2 {
+      margin: 0 0 16px;
+      font-size: 20px;
+    }
+
+    .status-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .status-list li {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfcff;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+      border-radius: 5px;
+      background: #eaf8f2;
+      color: var(--ok);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    main {
+      padding: 42px 0 64px;
+    }
+
+    section {
+      margin-top: 34px;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 26px;
+      line-height: 1.25;
+    }
+
+    .section-note {
+      max-width: 820px;
+      margin: -4px 0 20px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 10px 30px rgba(20, 38, 70, 0.05);
+    }
+
+    .panel-body {
+      padding: 22px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    label,
+    legend {
+      display: block;
+      margin-bottom: 8px;
+      color: #263349;
+      font-weight: 700;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      min-height: 42px;
+      padding: 10px 12px;
+      border: 1px solid #cbd3df;
+      border-radius: 6px;
+      background: #fff;
+      color: var(--text);
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 190px;
+      resize: vertical;
+    }
+
+    .radio-group,
+    .check-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfcff;
+      cursor: pointer;
+    }
+
+    .option input {
+      margin-top: 5px;
+      flex: 0 0 auto;
+    }
+
+    .option small {
+      display: block;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .help {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .result-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .result-box {
+      min-height: 520px;
+      white-space: pre-wrap;
+      overflow: auto;
+      padding: 16px;
+      border: 1px solid #cbd3df;
+      border-radius: 6px;
+      background: #fbfcff;
+      color: #111827;
+      font-family: "Microsoft YaHei", sans-serif;
+      font-size: 14px;
+    }
+
+    .notice {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border: 1px solid #ffd89a;
+      border-radius: 6px;
+      background: var(--soft-warn);
+      color: var(--warn);
+      font-size: 14px;
+    }
+
+    .examples {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .example-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .example-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .example-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .boundary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .boundary ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    footer {
+      padding: 30px 0 42px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #fff;
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      display: none;
+      padding: 12px 14px;
+      border-radius: 6px;
+      background: #14315f;
+      color: #fff;
+      box-shadow: var(--shadow);
+      z-index: 20;
+    }
+
+    .toast.show {
+      display: block;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .grid,
+      .examples,
+      .boundary {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 38px 0;
+      }
+
+      .result-box {
+        min-height: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">免费网页版 · 不需要安装 Codex</div>
+        <h1>中文论文文献综述提示词生成器</h1>
+        <p class="lead">不会写文献综述？输入论文题目和文献资料，一键生成可复制的文献综述提示词。支持已有文献、文献不足、没有文献三种情况。</p>
+        <div class="actions">
+          <a class="btn primary" href="#generator">开始生成提示词</a>
+          <a class="btn" href="#examples">查看示例</a>
+          <a class="btn" href="#no-literature">我没有文献怎么办</a>
+        </div>
+        <div class="tags" aria-label="工具特点">
+          <span class="tag">免费</span>
+          <span class="tag">本地生成提示词</span>
+          <span class="tag">不保存论文资料</span>
+          <span class="tag">支持候选文献待核验</span>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <h2>它能帮你生成什么？</h2>
+        <ul class="status-list">
+          <li><strong>已有 8 篇以上文献：</strong>生成完整综述提示词，要求每篇文献都写进正文，并附覆盖表。</li>
+          <li><strong>只有几篇文献：</strong>优先整理已有文献，再提示补充公开候选文献。</li>
+          <li><strong>还没有文献：</strong>先拆关键词、给检索式、规划 8 篇候选文献，再生成待核验综述提示词。</li>
+        </ul>
+        <div class="notice">本工具生成的是提示词，不直接生成最终论文。最终引用必须回到 CNKI、万方、维普、学校图书馆、期刊官网或原文页面人工核验。</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="generator">
+      <h2 class="section-title">生成器</h2>
+      <p class="section-note">填写越完整，生成的提示词越贴近你的论文场景。所有内容只在你的浏览器本地参与拼接，不会上传到服务器。</p>
+      <div class="grid">
+        <form class="panel" id="promptForm">
+          <div class="panel-body">
+            <div class="field">
+              <label for="topic">论文题目</label>
+              <input id="topic" type="text" placeholder="例如：大学生短视频使用对学习专注度的影响">
+            </div>
+            <div class="field">
+              <label for="direction">研究方向</label>
+              <input id="direction" type="text" placeholder="例如：短视频成瘾、学习投入、学业拖延">
+            </div>
+            <div class="field">
+              <label for="paperType">论文类型</label>
+              <select id="paperType">
+                <option>本科论文</option>
+                <option>硕士论文</option>
+                <option>期刊论文</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="discipline">学科领域</label>
+              <select id="discipline">
+                <option>教育学</option>
+                <option>管理学</option>
+                <option>法学</option>
+                <option>新闻传播</option>
+                <option>经济学</option>
+                <option>其他</option>
+              </select>
+            </div>
+
+            <fieldset class="field">
+              <legend>文献状态</legend>
+              <div class="radio-group">
+                <label class="option">
+                  <input type="radio" name="literatureStatus" value="enough" checked>
+                  <span>我已有 8 篇以上文献<small>适合已经整理好 CNKI、万方、维普、Zotero、BibTeX、RIS 或 PDF 摘要资料。</small></span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="literatureStatus" value="partial">
+                  <span>我只有几篇文献，不够 8 篇<small>适合已有 3-7 篇文献，需要补充候选文献。</small></span>
+                </label>
+                <label class="option" id="no-literature">
+                  <input type="radio" name="literatureStatus" value="none">
+                  <span>我还没有文献，需要先找候选文献<small>适合只有论文题目，需要先拆关键词和规划检索路径。</small></span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field" id="literatureField">
+              <label for="literature">文献资料</label>
+              <textarea id="literature" placeholder="请粘贴 CNKI、万方、维普、学校图书馆、Zotero、BibTeX、RIS、PDF 摘要或手动整理的文献信息。建议包含：作者、年份、题名、期刊或来源、摘要、关键词、DOI 或 URL。"></textarea>
+              <div class="help">如果你还没有文献，可以选择“我还没有文献”，这里可以留空。</div>
+            </div>
+
+            <fieldset class="field">
+              <legend>输出需求</legend>
+              <div class="check-grid">
+                <label class="option"><input type="checkbox" name="needs" value="生成完整文字式文献综述" checked><span>生成完整文字式文献综述</span></label>
+                <label class="option"><input type="checkbox" name="needs" value="每篇文献都写进正文" checked><span>每篇文献都写进正文</span></label>
+                <label class="option"><input type="checkbox" name="needs" value="生成文献覆盖表" checked><span>生成文献覆盖表</span></label>
+                <label class="option"><input type="checkbox" name="needs" value="检查缺失字段" checked><span>检查缺失字段</span></label>
+                <label class="option"><input type="checkbox" name="needs" value="标记待核验文献" checked><span>标记待核验文献</span></label>
+                <label class="option"><input type="checkbox" name="needs" value="生成研究空白"><span>生成研究空白</span></label>
+                <label class="option"><input type="checkbox" name="needs" value="生成创新点建议"><span>生成创新点建议</span></label>
+                <label class="option"><input type="checkbox" name="needs" value="生成相近论文和方法论建议"><span>生成相近论文和方法论建议</span></label>
+                <label class="option"><input type="checkbox" name="needs" value="生成开题报告可用版本"><span>生成开题报告可用版本</span></label>
+                <label class="option"><input type="checkbox" name="needs" value="表达更自然，减少模板感"><span>表达更自然，减少模板感</span></label>
+              </div>
+            </fieldset>
+
+            <div class="actions">
+              <button class="btn primary" type="submit">生成提示词</button>
+              <button class="btn" type="button" id="resetBtn">清空输入</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="panel">
+          <div class="panel-body">
+            <div class="result-head">
+              <h2 class="section-title" style="margin:0;font-size:22px;">生成结果</h2>
+              <div class="actions" style="margin:0;">
+                <button class="btn primary" type="button" id="copyBtn">复制提示词</button>
+                <button class="btn" type="button" id="regenerateBtn">重新生成</button>
+              </div>
+            </div>
+            <div class="result-box" id="result" aria-live="polite">填写左侧信息后，点击“生成提示词”。</div>
+            <div class="notice">使用步骤：复制生成的提示词，粘贴到 ChatGPT、DeepSeek、豆包、通义等支持长文本分析的 AI 工具里，再根据提示补充文献或论文题目。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples">
+      <h2 class="section-title">示例</h2>
+      <div class="examples">
+        <article class="example-card">
+          <h3>示例 A：已有 8 篇文献</h3>
+          <p>适合已经从数据库或文献管理工具里整理好题录、摘要和关键词的用户。</p>
+          <button class="btn" type="button" data-example="enough">填入示例</button>
+        </article>
+        <article class="example-card">
+          <h3>示例 B：没有文献</h3>
+          <p>适合只有论文题目，希望先找 8 篇候选文献并生成待核验综述的用户。</p>
+          <button class="btn" type="button" data-example="none">填入示例</button>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">学术边界</h2>
+      <div class="boundary">
+        <div class="example-card">
+          <h3>可以做</h3>
+          <ul>
+            <li>整理用户提供的文献资料。</li>
+            <li>生成文献综述提示词和初稿要求。</li>
+            <li>提示缺失字段和人工核验位置。</li>
+            <li>在没有文献时规划检索式和候选文献结构。</li>
+          </ul>
+        </div>
+        <div class="example-card">
+          <h3>不能做</h3>
+          <ul>
+            <li>代写整篇论文。</li>
+            <li>编造参考文献、作者、期刊、年份或 DOI。</li>
+            <li>保证查重、AI 检测、导师认可或期刊录用。</li>
+            <li>绕过 CNKI、万方、维普、学校图书馆的权限限制。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Codex Skill 高级版入口</h2>
+      <p class="section-note">这个网页是普通用户入口。如果你使用 Codex，可以安装完整 Skill，获得更完整的文献矩阵、知识地图、创新点、相近论文和方法论分析流程。</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/qinky1234-sys/chinese-academic-paper-skill">打开 GitHub 仓库</a>
+        <a class="btn" href="https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/11-real-no-literature-to-candidates-review.md">查看真实案例</a>
+        <a class="btn" href="https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues">反馈问题</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">免费网页版不调用 AI API，不保存用户输入。正式论文引用请以数据库、期刊官网、DOI 页面或原文为准。</div>
+  </footer>
+
+  <div class="toast" id="toast">已复制到剪贴板</div>
+
+  <script>
+    const form = document.getElementById("promptForm");
+    const result = document.getElementById("result");
+    const copyBtn = document.getElementById("copyBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const regenerateBtn = document.getElementById("regenerateBtn");
+    const toast = document.getElementById("toast");
+
+    function getStatus() {
+      return document.querySelector("input[name='literatureStatus']:checked").value;
+    }
+
+    function getNeeds() {
+      return Array.from(document.querySelectorAll("input[name='needs']:checked")).map((item) => item.value);
+    }
+
+    function baseInfo() {
+      const topic = document.getElementById("topic").value.trim() || "【填写你的论文题目】";
+      const direction = document.getElementById("direction").value.trim() || "【填写研究方向】";
+      const paperType = document.getElementById("paperType").value;
+      const discipline = document.getElementById("discipline").value;
+      const needs = getNeeds();
+      return { topic, direction, paperType, discipline, needs };
+    }
+
+    function buildEnoughTemplate(info, literature) {
+      return `请扮演中文论文文献综述助手。
+
+我的论文题目是：${info.topic}
+研究方向是：${info.direction}
+论文类型是：${info.paperType}
+学科领域是：${info.discipline}
+
+我会在后面粘贴 8 篇以上文献资料，资料可能来自 CNKI、万方、维普、学校图书馆、期刊官网、Zotero、BibTeX、RIS、PDF 摘要或复制题录。
+
+请你完成以下任务：
+1. 识别我提供的文献资料，整理成文献覆盖简表。
+2. 检查每篇文献是否至少包含作者、题名、期刊或来源、发表年份。
+3. 对所有字段足够的文献，生成一篇完整的中文文献综述。
+4. 综述正文必须覆盖我提供的每一篇可用文献。
+5. 每篇文献都要使用类似“XXX学者在《xxxxx》一文中提出/指出/认为……”的写法。
+6. 最后附一张文献覆盖表，说明每篇文献是否已经写入综述，以及正文位置。
+7. 如果某篇文献字段不完整，请标注“需要人工核验”，不要自行补全。
+
+我特别需要你输出：
+${info.needs.map((item, index) => `${index + 1}. ${item}`).join("\n")}
+
+硬性要求：
+- 不要编造作者、题名、期刊、年份、DOI 或研究结论。
+- 不要自行补全不存在的信息。
+- 不要承诺查重、AI 检测、导师认可或期刊录用。
+- 表达要自然，减少模板化语言，但不能改变文献原意。
+
+以下是我的文献资料：
+${literature || "【在这里粘贴 8 篇以上文献】"}`;
+    }
+
+    function buildPartialTemplate(info, literature) {
+      return `请扮演中文论文文献综述助手。
+
+我的论文题目是：${info.topic}
+研究方向是：${info.direction}
+论文类型是：${info.paperType}
+学科领域是：${info.discipline}
+
+我目前只有几篇文献，不够 8 篇。请你优先使用我提供的文献，再判断是否需要补充公开候选文献。
+
+请你完成以下任务：
+1. 先整理我已有文献的作者、年份、题名、期刊或来源、核心观点和核验状态。
+2. 判断这些文献是否足以支撑一篇文献综述。
+3. 如果不足 8 篇，请说明还缺哪些类型的文献，例如背景文献、核心变量文献、研究方法文献、相近主题文献。
+4. 给出补充检索关键词和检索式，覆盖 CNKI、万方、维普、学校图书馆、期刊官网、百度学术、Google Scholar。
+5. 如果你能找到公开候选文献，请单独列为“待核验候选文献表”。
+6. 已有文献和候选文献合计达到 8 篇左右后，生成完整或待核验版文献综述。
+7. 综述正文必须区分“用户已提供文献”和“待核验候选文献”。
+8. 每篇可用文献都要尽量写入正文，使用“XXX学者在《xxxxx》一文中提出/指出/认为……”的写法。
+
+我特别需要你输出：
+${info.needs.map((item, index) => `${index + 1}. ${item}`).join("\n")}
+
+硬性要求：
+- 已有文献优先。
+- 已有文献和候选文献必须分开标注。
+- 候选文献不能冒充正式引用。
+- 公开来源候选文献必须标记为“待核验”。
+- 不要编造任何文献字段或研究结论。
+- 不要承诺查重、AI 检测、导师认可或期刊录用。
+
+以下是我已有的文献资料：
+${literature || "【在这里粘贴已有文献】"}`;
+    }
+
+    function buildNoneTemplate(info) {
+      return `请扮演中文论文文献综述助手。
+
+我的论文题目是：${info.topic}
+研究方向是：${info.direction}
+论文类型是：${info.paperType}
+学科领域是：${info.discipline}
+我现在还没有整理好的文献。
+
+请你先帮我完成第一轮文献查找准备：
+1. 拆解这个题目的核心关键词、同义词和扩展词。
+2. 给出适合在 CNKI、万方、维普、学校图书馆、期刊官网、百度学术、Google Scholar 等入口使用的检索式。
+3. 帮我规划 8 篇候选文献的搭配方式，例如背景文献、核心变量文献、研究方法文献、相近主题文献。
+4. 如果你能基于公开来源找到候选文献，请整理为候选文献表。
+5. 候选文献表至少包括：作者、年份、题名、期刊或来源、相关性说明、核验状态。
+6. 所有没有经过我人工确认的文献，都必须标注为“待核验”。
+7. 如果候选文献元数据足够，请生成“待核验版完整文字式文献综述”。
+8. 待核验版综述也要尽量覆盖每一篇候选文献，并使用“XXX学者在《xxxxx》一文中提出/指出/认为……”的写法。
+
+我特别需要你输出：
+${info.needs.map((item, index) => `${index + 1}. ${item}`).join("\n")}
+
+硬性要求：
+- 不要编造文献。
+- 不要把待核验候选文献写成正式已核验引用。
+- 不要绕过 CNKI、万方、维普、学校图书馆或期刊官网的登录、付费、验证码和机构权限。
+- 不要承诺查重、AI 检测、导师认可或期刊录用。
+- 最后告诉我下一步应该去哪里人工核验这些文献。`;
+    }
+
+    function buildPrompt() {
+      const info = baseInfo();
+      const literature = document.getElementById("literature").value.trim();
+      const status = getStatus();
+      if (status === "enough") return buildEnoughTemplate(info, literature);
+      if (status === "partial") return buildPartialTemplate(info, literature);
+      return buildNoneTemplate(info);
+    }
+
+    function renderPrompt() {
+      result.textContent = buildPrompt();
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      renderPrompt();
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    regenerateBtn.addEventListener("click", renderPrompt);
+
+    resetBtn.addEventListener("click", () => {
+      form.reset();
+      result.textContent = "填写左侧信息后，点击“生成提示词”。";
+    });
+
+    copyBtn.addEventListener("click", async () => {
+      const text = result.textContent.trim();
+      if (!text || text === "填写左侧信息后，点击“生成提示词”。") {
+        showToast("请先生成提示词");
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("已复制到剪贴板");
+      } catch (error) {
+        showToast("复制失败，请手动选择文本复制");
+      }
+    });
+
+    document.querySelectorAll("[data-example]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const type = button.dataset.example;
+        document.getElementById("topic").value = type === "enough"
+          ? "大学生短视频使用对学习专注度的影响"
+          : "乡村振兴背景下基层数字治理";
+        document.getElementById("direction").value = type === "enough"
+          ? "短视频成瘾、学习投入、学业拖延"
+          : "数字治理、基层治理、乡村振兴";
+        document.getElementById("paperType").value = "本科论文";
+        document.getElementById("discipline").value = type === "enough" ? "教育学" : "管理学";
+        document.querySelector(`input[name='literatureStatus'][value='${type === "enough" ? "enough" : "none"}']`).checked = true;
+        document.getElementById("literature").value = type === "enough"
+          ? "1. 作者，年份，《题名》，期刊，摘要或核心观点。\n2. 作者，年份，《题名》，期刊，摘要或核心观点。\n请继续粘贴到 8 篇以上。"
+          : "";
+        renderPrompt();
+        document.getElementById("generator").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+</body>
+</html>
