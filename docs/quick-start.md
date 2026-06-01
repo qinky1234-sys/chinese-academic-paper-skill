@@ -2,6 +2,16 @@
 
 这份文档只解决一个问题：第一次使用 `chinese-academic-paper-assistant` 时，应该从哪里开始。
 
+如果你没有 Codex，先用免费网页版更省事：
+
+1. 打开 <https://qinky1234-sys.github.io/chinese-academic-paper-skill/>。
+2. 填写论文题目、研究方向、论文类型和学科领域。
+3. 选择“已有 8 篇以上文献 / 文献不够 8 篇 / 还没有文献”。
+4. 粘贴 CNKI、万方、维普、学校图书馆、Zotero、BibTeX、RIS、PDF 摘要或手动整理的文献信息；如果没有文献，可以留空。
+5. 点击“生成提示词”，复制右侧结果，粘贴到 ChatGPT、DeepSeek、豆包、通义等 AI 工具里。
+
+更详细的网页操作见：[免费网页版使用指南](./web-usage-guide.md)。
+
 ## 第 1 步：先判断你有没有文献
 
 选择一种情况：

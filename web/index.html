@@ -186,6 +186,45 @@
       color: var(--muted);
     }
 
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step-card {
+      min-height: 180px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .step-card b {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .step-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .step-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
@@ -435,6 +474,7 @@
     @media (max-width: 860px) {
       .hero,
       .grid,
+      .step-grid,
       .examples,
       .boundary {
         grid-template-columns: 1fr;
@@ -460,6 +500,7 @@
         <p class="lead">不会写文献综述？输入论文题目和文献资料，一键生成可复制的文献综述提示词。支持已有文献、文献不足、没有文献三种情况。</p>
         <div class="actions">
           <a class="btn primary" href="#generator">开始生成提示词</a>
+          <a class="btn" href="#how-to-use">使用流程</a>
           <a class="btn" href="#examples">查看示例</a>
           <a class="btn" href="#no-literature">我没有文献怎么办</a>
         </div>
@@ -483,6 +524,34 @@
   </header>
 
   <main class="wrap">
+    <section id="how-to-use">
+      <h2 class="section-title">4 步使用流程</h2>
+      <p class="section-note">这个网页不会直接生成论文，而是帮你生成一段结构完整的提示词。复制到常用 AI 工具后，再由 AI 根据提示词和文献资料输出文献综述。</p>
+      <div class="step-grid">
+        <article class="step-card">
+          <b>1</b>
+          <h3>填写论文信息</h3>
+          <p>输入论文题目、研究方向、论文类型和学科领域。下拉框没有你的专业时，直接在自定义学科里填写。</p>
+        </article>
+        <article class="step-card">
+          <b>2</b>
+          <h3>选择文献状态</h3>
+          <p>按真实情况选择已有 8 篇以上、文献不够 8 篇，或还没有文献。没有文献也可以先生成检索和候选文献提示词。</p>
+        </article>
+        <article class="step-card">
+          <b>3</b>
+          <h3>粘贴或选择资料</h3>
+          <p>可粘贴 CNKI、万方、维普、学校图书馆、Zotero、BibTeX、RIS、PDF 摘要或手动整理的文献信息。</p>
+        </article>
+        <article class="step-card">
+          <b>4</b>
+          <h3>复制到 AI 工具</h3>
+          <p>点击生成后复制右侧提示词，粘贴到 ChatGPT、DeepSeek、豆包、通义等工具；如有 PDF 或 Word，请在 AI 工具里同步上传。</p>
+        </article>
+      </div>
+      <div class="notice">提示：网页支持读取 `.txt`、`.md`、`.ris`、`.bib` 文本内容；PDF 和 Word 不会在本网页上传或解析，只会生成后续操作提醒。</div>
+    </section>
+
     <section id="generator">
       <h2 class="section-title">生成器</h2>
       <p class="section-note">填写越完整，生成的提示词越贴近你的论文场景。所有内容只在你的浏览器本地参与拼接，不会上传到服务器。</p>
@@ -738,6 +807,7 @@
       <p class="section-note">这个网页是普通用户入口。如果你使用 Codex，可以安装完整 Skill，获得更完整的文献矩阵、知识地图、创新点、相近论文和方法论分析流程。</p>
       <div class="actions">
         <a class="btn primary" href="https://github.com/qinky1234-sys/chinese-academic-paper-skill">打开 GitHub 仓库</a>
+        <a class="btn" href="https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/docs/web-usage-guide.md">查看网页使用指南</a>
         <a class="btn" href="https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/11-real-no-literature-to-candidates-review.md">查看真实案例</a>
         <a class="btn" href="https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues">反馈问题</a>
       </div>

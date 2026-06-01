@@ -4,6 +4,11 @@
 
 注意：示例中的文献题名、作者和期刊信息用于演示格式，不应当直接作为真实参考文献使用。正式写作时，请使用用户从 CNKI、万方、维普、学校图书馆、期刊官网、DOI、BibTeX、RIS、EndNote、NoteExpress 或 PDF 中导入的真实文献。
 
+如果你没有 Codex，建议先打开免费网页版生成提示词，再对照下面示例理解输出结果：
+
+- 免费网页版：<https://qinky1234-sys.github.io/chinese-academic-paper-skill/>
+- 网页使用指南：[免费网页版使用指南](../docs/web-usage-guide.md)
+
 ## 示例列表
 
 1. [CNKI/万方/维普题录导入到文献矩阵](./01-imported-records-to-matrix.md)

@@ -2,6 +2,8 @@
 
 这份文档给“现在手里还没有文献”的用户使用。它的目标是让你先得到一批可核验的候选文献、检索策略和初步综述框架，而不是让 AI 直接编出参考文献。
 
+如果你没有安装 Codex，也可以先用免费网页版完成同样的第一步：打开 <https://qinky1234-sys.github.io/chinese-academic-paper-skill/>，选择“我还没有文献，需要先找候选文献”，文献资料框可以留空，然后复制生成的提示词到 ChatGPT、DeepSeek、豆包、通义等 AI 工具里。详细流程见：[免费网页版使用指南](./web-usage-guide.md)。
+
 ## 你会得到什么
 
 当你没有文献时，`chinese-academic-paper-assistant` 可以先帮你产出：

@@ -9,6 +9,7 @@
 ## 推荐分享链接
 
 - 免费网页版：<https://qinky1234-sys.github.io/chinese-academic-paper-skill/>
+- 免费网页版使用指南：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/docs/web-usage-guide.md>
 - 仓库首页：<https://github.com/qinky1234-sys/chinese-academic-paper-skill>
 - 不安装也能先用：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/PROMPT_VERSION.md>
 - 真实案例：没有文献到 8 篇候选再到待核验综述：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/11-real-no-literature-to-candidates-review.md>
@@ -41,6 +42,9 @@
 
 免费网页版：
 https://qinky1234-sys.github.io/chinese-academic-paper-skill/
+
+使用流程：
+https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/docs/web-usage-guide.md
 
 真实案例：
 https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/11-real-no-literature-to-candidates-review.md

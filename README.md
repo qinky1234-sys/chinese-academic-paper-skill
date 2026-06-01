@@ -18,6 +18,8 @@
 
 [免费网页版：中文论文文献综述提示词生成器](https://qinky1234-sys.github.io/chinese-academic-paper-skill/)
 
+使用流程很简单：填写论文题目和研究方向 → 选择文献状态 → 粘贴或选择文献资料 → 复制生成的提示词到 ChatGPT、DeepSeek、豆包、通义等 AI 工具里继续生成。详细说明见：[免费网页版使用指南](./docs/web-usage-guide.md)。
+
 如果你还不知道怎么安装 Skill，也可以打开 Markdown 版入口复制提示词：
 
 [不安装也能先用：提示词版入口](./PROMPT_VERSION.md)
@@ -38,6 +40,7 @@
 ## 快速入口
 
 - [免费网页版：提示词生成器](https://qinky1234-sys.github.io/chinese-academic-paper-skill/)
+- [免费网页版使用指南](./docs/web-usage-guide.md)
 - [不安装也能先用](./PROMPT_VERSION.md)
 - [推广固定入口](./SHARE.md)
 - [3 分钟上手](./docs/quick-start.md)
