@@ -36,6 +36,7 @@
 - [不安装也能先用](./PROMPT_VERSION.md)
 - [推广固定入口](./SHARE.md)
 - [3 分钟上手](./docs/quick-start.md)
+- [真实案例：没有文献 → 8 篇候选 → 待核验综述](./examples/11-real-no-literature-to-candidates-review.md)
 - [一键综述示例](./examples/10-one-click-literature-review.md)
 - [复制即用提示词](./docs/copy-paste-prompts.md)
 - [更新日志](./CHANGELOG.md)

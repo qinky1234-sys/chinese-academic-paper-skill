@@ -10,6 +10,7 @@
 
 - 仓库首页：<https://github.com/qinky1234-sys/chinese-academic-paper-skill>
 - 不安装也能先用：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/PROMPT_VERSION.md>
+- 真实案例：没有文献到 8 篇候选再到待核验综述：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/11-real-no-literature-to-candidates-review.md>
 - 一键综述示例：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/10-one-click-literature-review.md>
 - 3 分钟上手：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/docs/quick-start.md>
 - 复制即用提示词：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/docs/copy-paste-prompts.md>
@@ -35,6 +36,9 @@ chinese-academic-paper-assistant
 
 不会安装也能先试：
 https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/PROMPT_VERSION.md
+
+真实案例：
+https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/11-real-no-literature-to-candidates-review.md
 
 仓库：
 https://github.com/qinky1234-sys/chinese-academic-paper-skill
