@@ -379,6 +379,20 @@
       font-size: 14px;
     }
 
+    .support-note {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid #c9d8ff;
+      border-radius: 8px;
+      background: #f3f7ff;
+      color: #263349;
+      font-size: 14px;
+    }
+
+    .support-note strong {
+      color: var(--brand-dark);
+    }
+
     .examples {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -532,6 +546,7 @@
           <a class="btn" href="#how-to-use">使用流程</a>
           <a class="btn" href="#versions">版本区别</a>
           <a class="btn" href="#examples">查看示例</a>
+          <a class="btn" href="https://github.com/qinky1234-sys/chinese-academic-paper-skill">GitHub 开源项目</a>
           <a class="btn" href="#no-literature">我没有文献怎么办</a>
         </div>
         <div class="tags" aria-label="工具特点">
@@ -766,6 +781,11 @@
               </div>
             </div>
             <div class="result-box" id="result" aria-live="polite">填写左侧信息后，点击“生成提示词”。这里会出现一整段可以直接复制到 AI 工具里的提示词。</div>
+            <div class="support-note">
+              <strong>觉得有用的话，可以点个 Star 支持后续更新。</strong>
+              这是一个开源小工具，后续会继续完善 PDF 文献信息读取、Word 导出、GB/T 7714 和文献核验流程。
+              <a href="https://github.com/qinky1234-sys/chinese-academic-paper-skill">去 GitHub 查看</a>
+            </div>
             <div class="notice">右侧框里的整段文字就是提示词。点击“复制提示词”，再粘贴到 ChatGPT、DeepSeek、豆包、通义等支持长文本分析的 AI 工具里使用。</div>
           </div>
         </div>
@@ -876,7 +896,12 @@
   </main>
 
   <footer>
-    <div class="wrap">免费网页版不调用 AI API，不保存用户输入。正式论文引用请以数据库、期刊官网、DOI 页面或原文为准。</div>
+    <div class="wrap">
+      免费网页版不调用 AI API，不保存用户输入。正式论文引用请以数据库、期刊官网、DOI 页面或原文为准。
+      这是一个开源项目，如果对你有帮助，欢迎到
+      <a href="https://github.com/qinky1234-sys/chinese-academic-paper-skill">GitHub 点 Star</a>
+      或提交功能需求。
+    </div>
   </footer>
 
   <div class="toast" id="toast">已复制到剪贴板</div>
