@@ -4,6 +4,12 @@
 
 **免费入口：** <https://qinky1234-sys.github.io/chinese-academic-paper-skill/>
 
+**反馈入口：**
+- 总反馈：[中文论文文献综述助手使用反馈集中收集](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/2)
+- 使用问题：[提交使用问题](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=usage-question.md)
+- 功能建议：[提交功能需求](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=feature-request.md)
+- v0.2 PDF 路线：[PDF 文献信息读取 Roadmap](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/3)
+
 如果这个工具帮你节省了文献综述前期整理时间，欢迎在 GitHub 点一个 Star。后续会继续更新 PDF 文献信息读取、Word 导出、GB/T 7714 参考文献格式和更完整的文献核验流程。
 
 上传 8 篇以上文献，或先规划 8 篇候选文献后，可以辅助整理：
@@ -53,6 +59,9 @@
 
 - [免费网页版：提示词生成器](https://qinky1234-sys.github.io/chinese-academic-paper-skill/)
 - [免费网页版使用指南](./docs/web-usage-guide.md)
+- [用户反馈入口：集中反馈 Issue](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/2)
+- [用户反馈入口：使用问题](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=usage-question.md)
+- [v0.2 PDF 文献信息读取设计文档](./docs/v0.2-pdf-literature-extraction.md)
 - [不安装也能先用](./PROMPT_VERSION.md)
 - [推广固定入口](./SHARE.md)
 - [普通用户完整演示](./examples/12-free-web-user-demo.md)
@@ -307,7 +316,7 @@ chinese-academic-paper-skill/
 - v0.1.10：完整版文字式文献综述，在完整流程最后逐篇覆盖所有已找到并进入矩阵或候选表的文献。
 - v0.1.11：开源版一键综述辅助模式，上传 8 篇以上文献或由 skill 规划候选文献后，输出综述草稿要求、核验提醒和文献覆盖简表。
 - Unreleased：新增不安装也能先用的提示词版入口，以及“没有文献 → 8 篇真实公开候选 → 待核验综述”的完整案例。
-- v0.2：授权万方接口接入、付费额度、中文元数据核验增强、批量文献分析。
+- v0.2：PDF 文献信息读取原型、授权万方接口接入规划、中文元数据核验增强、批量文献分析和用户反馈优先级排序。
 - v0.3+：更完善的 CNKI/VIP/学校图书馆导入流程、更多导出格式、期刊官网公开元数据处理。
 
 ## 后续计划
@@ -323,9 +332,15 @@ chinese-academic-paper-skill/
 - 中文期刊推荐报告
 - Word 文档导出
 
-如果你正在使用免费网页版，也欢迎直接提交需求：
+### 反馈入口
+
+如果你正在使用免费网页版，也欢迎直接提交需求。现在最希望收集三类反馈：PDF 文献信息读取、Word 导出、GB/T 7714 参考文献格式。
 
 - [我想要网页直接生成综述 / PDF 解析 / Word 导出](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=feature-request.md)
+- [PDF 文献信息读取 Roadmap Issue](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/3)
+- [Word 文档导出 Roadmap Issue](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/4)
+- [GB/T 7714 参考文献格式 Roadmap Issue](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/5)
+- [v0.2 PDF 文献信息读取设计文档](./docs/v0.2-pdf-literature-extraction.md)
 - [我遇到了使用问题](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=usage-question.md)
 
 ## 社区推广

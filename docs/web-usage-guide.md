@@ -138,7 +138,19 @@ AI 输出后，至少检查 5 件事：
 
 ## 反馈和 Pro 版需求
 
-如果你希望后续支持网页内直接生成综述、PDF 自动解析、Word 导出、GB/T 7714 参考文献格式或中文数据库授权接口，可以在这里留言：
+如果你希望后续支持网页内直接生成综述、PDF 自动解析、Word 导出、GB/T 7714 参考文献格式或中文数据库授权接口，可以在这里留言。
 
-- [提交功能需求](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=feature-request.md)
+优先反馈入口：
+
+- [总反馈入口](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/2)
 - [反馈使用问题](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=usage-question.md)
+- [提交功能需求](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=feature-request.md)
+
+Roadmap 入口：
+
+- [PDF 文献信息读取](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/3)
+- [Word 文档导出](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/4)
+- [GB/T 7714 参考文献格式](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/5)
+- [v0.2 PDF 文献信息读取设计文档](./v0.2-pdf-literature-extraction.md)
+
+反馈时建议写清楚：你现在用的是本科论文、硕士论文还是期刊论文；文献主要来自 CNKI、万方、维普、学校图书馆还是期刊官网；你最希望先解决 PDF、Word、GB/T 7714 里的哪一个。

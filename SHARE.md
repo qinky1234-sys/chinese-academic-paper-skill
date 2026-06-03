@@ -17,6 +17,10 @@
 - 一键综述示例：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples/10-one-click-literature-review.md>
 - 3 分钟上手：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/docs/quick-start.md>
 - 复制即用提示词：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/docs/copy-paste-prompts.md>
+- 总反馈入口：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/2>
+- 反馈使用问题：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=usage-question.md>
+- 提交功能需求：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=feature-request.md>
+- PDF 文献信息读取 Roadmap：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/3>
 
 ## 适合发给谁
 
@@ -70,6 +74,16 @@ https://github.com/qinky1234-sys/chinese-academic-paper-skill/blob/main/examples
 所有文献都要逐篇写到，格式为“XXX学者在《xxxxx》一文中提出/指出/认为……”。
 不要编造文献；公开来源候选文献必须标注为“待核验”。
 ```
+
+## 希望别人给什么反馈
+
+推广时可以顺手问一句：你更需要 PDF 文献信息读取、Word 导出，还是 GB/T 7714 参考文献格式？如果对整体使用流程有建议，可以先发到总反馈入口。
+
+- 总反馈入口：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/2>
+
+- PDF 文献信息读取：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/3>
+- Word 文档导出：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/4>
+- GB/T 7714 参考文献格式：<https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/5>
 
 ## 推广时强调的边界
 
