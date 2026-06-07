@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- 在 README 顶部新增 2026-06-07 项目近况，展示 v0.1.13 Release、免费网页版定位和下一阶段反馈重点。
+
 - 新增 `docs/v0.2-pdf-literature-extraction.md`，规划 PDF 文献信息读取的免费版、Codex Skill 开源版和 Pro 版边界。
 - 在 README、免费网页版和 SHARE 中集中补充反馈入口，引导用户提交使用问题、功能建议和 PDF/Word/GB/T 7714 Roadmap 需求。
 - 在免费网页版新增“正在收集的反馈”区块，明确下一阶段优先收集 PDF 文献信息读取、Word 导出和 GB/T 7714 的真实使用场景。
