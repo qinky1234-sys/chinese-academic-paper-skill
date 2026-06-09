@@ -12,10 +12,11 @@
 
 如果这个工具帮你节省了文献综述前期整理时间，欢迎在 GitHub 点一个 Star。后续会继续更新 PDF 文献信息读取、Word 导出、GB/T 7714 参考文献格式和更完整的文献核验流程。
 
-## 项目近况（2026-06-07）
+## 项目近况（2026-06-10）
 
-今天继续维护免费网页版和 GitHub 主页，把项目入口从“只给 Codex 用户看”调整为普通用户也能直接试用：
+今天继续补充普通用户更容易理解的使用材料，把“能不能生成综述”进一步拆成“先核验文献、再整理综述”的具体步骤：
 
+- 新增 [文献综述 30 分钟自检清单](./docs/literature-review-30min-checklist.md)，用于开题、初稿或投稿前检查文献来源、综述结构、文献覆盖和创新点可行性。
 - 已发布 [v0.1.13 免费网页版反馈入口与 PDF Roadmap](https://github.com/qinky1234-sys/chinese-academic-paper-skill/releases/tag/v0.1.13)。
 - GitHub 仓库简介已改为“免费中文文献综述提示词生成器”，优先突出没有 Codex 也能使用。
 - 目前重点收集 PDF 文献信息读取、Word 导出、GB/T 7714 参考文献格式三类需求。
@@ -68,6 +69,7 @@
 
 - [免费网页版：提示词生成器](https://qinky1234-sys.github.io/chinese-academic-paper-skill/)
 - [免费网页版使用指南](./docs/web-usage-guide.md)
+- [文献综述 30 分钟自检清单](./docs/literature-review-30min-checklist.md)
 - [用户反馈入口：集中反馈 Issue](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/2)
 - [用户反馈入口：使用问题](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=usage-question.md)
 - [v0.2 PDF 文献信息读取设计文档](./docs/v0.2-pdf-literature-extraction.md)
