@@ -5,7 +5,6 @@
 ## Unreleased
 
 - 新增 `docs/literature-review-30min-checklist.md`，用于开题、初稿或投稿前快速检查文献来源、综述结构、文献覆盖和创新点可行性。
-- 新增 `promotion/zhihu-2026-06-10.md`，整理一篇面向知乎发布的项目介绍稿，方便继续推广免费网页版和 GitHub 仓库。
 
 - 在 README 顶部新增 2026-06-07 项目近况，展示 v0.1.13 Release、免费网页版定位和下一阶段反馈重点。
 
