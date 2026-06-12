@@ -4,6 +4,7 @@
 
 ## Unreleased
 
+- 新增 `docs/safe-ai-literature-review-workflow.md`，说明 AI 辅助文献综述时的安全边界、待核验文献处理、研究关系表达和可复制安全提示词。
 - 新增 `docs/literature-review-30min-checklist.md`，用于开题、初稿或投稿前快速检查文献来源、综述结构、文献覆盖和创新点可行性。
 
 - 在 README 顶部新增 2026-06-07 项目近况，展示 v0.1.13 Release、免费网页版定位和下一阶段反馈重点。

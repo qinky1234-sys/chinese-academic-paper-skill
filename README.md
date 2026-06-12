@@ -12,10 +12,11 @@
 
 如果这个工具帮你节省了文献综述前期整理时间，欢迎在 GitHub 点一个 Star。后续会继续更新 PDF 文献信息读取、Word 导出、GB/T 7714 参考文献格式和更完整的文献核验流程。
 
-## 项目近况（2026-06-10）
+## 项目近况（2026-06-12）
 
-今天继续补充普通用户更容易理解的使用材料，把“能不能生成综述”进一步拆成“先核验文献、再整理综述”的具体步骤：
+今天继续补充安全使用边界，把“AI 能做什么”和“必须人工核验什么”拆得更清楚，避免被误解为论文代写或自动编参考文献：
 
+- 新增 [AI 辅助文献综述安全使用指南](./docs/safe-ai-literature-review-workflow.md)，说明材料整理、待核验文献、研究关系、研究空白和创新点的安全写法。
 - 新增 [文献综述 30 分钟自检清单](./docs/literature-review-30min-checklist.md)，用于开题、初稿或投稿前检查文献来源、综述结构、文献覆盖和创新点可行性。
 - 已发布 [v0.1.13 免费网页版反馈入口与 PDF Roadmap](https://github.com/qinky1234-sys/chinese-academic-paper-skill/releases/tag/v0.1.13)。
 - GitHub 仓库简介已改为“免费中文文献综述提示词生成器”，优先突出没有 Codex 也能使用。
@@ -69,6 +70,7 @@
 
 - [免费网页版：提示词生成器](https://qinky1234-sys.github.io/chinese-academic-paper-skill/)
 - [免费网页版使用指南](./docs/web-usage-guide.md)
+- [AI 辅助文献综述安全使用指南](./docs/safe-ai-literature-review-workflow.md)
 - [文献综述 30 分钟自检清单](./docs/literature-review-30min-checklist.md)
 - [用户反馈入口：集中反馈 Issue](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/2)
 - [用户反馈入口：使用问题](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/new?template=usage-question.md)
