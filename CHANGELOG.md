@@ -4,6 +4,7 @@
 
 ## Unreleased
 
+- 新增 `docs/gbt7714-reference-checklist.md`，用于在生成 GB/T 7714 参考文献格式前检查文献类型、必要字段、待核验记录和常见风险。
 - 新增 `docs/safe-ai-literature-review-workflow.md`，说明 AI 辅助文献综述时的安全边界、待核验文献处理、研究关系表达和可复制安全提示词。
 - 新增 `docs/literature-review-30min-checklist.md`，用于开题、初稿或投稿前快速检查文献来源、综述结构、文献覆盖和创新点可行性。
 

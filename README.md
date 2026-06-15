@@ -12,10 +12,11 @@
 
 如果这个工具帮你节省了文献综述前期整理时间，欢迎在 GitHub 点一个 Star。后续会继续更新 PDF 文献信息读取、Word 导出、GB/T 7714 参考文献格式和更完整的文献核验流程。
 
-## 项目近况（2026-06-12）
+## 项目近况（2026-06-15）
 
-今天继续补充安全使用边界，把“AI 能做什么”和“必须人工核验什么”拆得更清楚，避免被误解为论文代写或自动编参考文献：
+今天继续补充参考文献核验材料，把“能不能生成 GB/T 7714 格式”前面的字段检查步骤拆清楚，避免把缺字段、错字段或候选文献直接格式化成正式参考文献：
 
+- 新增 [GB/T 7714 参考文献核验清单](./docs/gbt7714-reference-checklist.md)，用于检查文献类型、作者、题名、来源、年份、卷期页码、DOI/URL 和待核验字段。
 - 新增 [AI 辅助文献综述安全使用指南](./docs/safe-ai-literature-review-workflow.md)，说明材料整理、待核验文献、研究关系、研究空白和创新点的安全写法。
 - 新增 [文献综述 30 分钟自检清单](./docs/literature-review-30min-checklist.md)，用于开题、初稿或投稿前检查文献来源、综述结构、文献覆盖和创新点可行性。
 - 已发布 [v0.1.13 免费网页版反馈入口与 PDF Roadmap](https://github.com/qinky1234-sys/chinese-academic-paper-skill/releases/tag/v0.1.13)。
@@ -70,6 +71,7 @@
 
 - [免费网页版：提示词生成器](https://qinky1234-sys.github.io/chinese-academic-paper-skill/)
 - [免费网页版使用指南](./docs/web-usage-guide.md)
+- [GB/T 7714 参考文献核验清单](./docs/gbt7714-reference-checklist.md)
 - [AI 辅助文献综述安全使用指南](./docs/safe-ai-literature-review-workflow.md)
 - [文献综述 30 分钟自检清单](./docs/literature-review-30min-checklist.md)
 - [用户反馈入口：集中反馈 Issue](https://github.com/qinky1234-sys/chinese-academic-paper-skill/issues/2)
